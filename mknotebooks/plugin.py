@@ -54,7 +54,9 @@ class Plugin(mkdocs.plugins.BasePlugin):
     def on_files(self, files, config):
         files = Files(
             [
-                NotebookFile(f, **config) if f.abs_src_path.endswith("ipynb") else f
+                NotebookFile(f, **config)
+                if str(f.abs_src_path).endswith("ipynb")
+                else f
                 for f in files
             ]
         )
