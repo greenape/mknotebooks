@@ -1,0 +1,7 @@
+site_name: mknotebooks
+repo_name: 'greenape/mknotebooks'
+repo_url: https://github.com/greenape/mknotebooks
+plugins:
+  - mknotebooks:
+      execute: true
+      preamble: "pandas_to_markdown.py"
