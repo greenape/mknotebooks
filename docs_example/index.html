@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>A Simple Example - mknotebooks</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">mknotebooks</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">mknotebooks</a>
+                            </li>
+                            <li >
+                                <a href="../LICENSE/">LICENSE</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">A Simple Example</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                            <li >
+                                <a rel="next" href="../LICENSE/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/greenape/mknotebooks/edit/master/examples/execute_with_preamble/docs/docs_example.ipynb">Edit on greenape/mknotebooks</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#a-simple-example">A Simple Example</a></li>
+            <li><a href="#the-last-run-time">The last run time</a></li>
+            <li><a href="#lets-make-a-dataframe">Let's make a dataframe</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="a-simple-example">A Simple Example</h1>
+<p>This notebook shows the last time it was run, displays a dataframe, and then plots it.</p>
+<p>If you run <code>mkdocs serve</code> in the directory above this, and make changes here you'll see your docs update a moment after saving the notebook.</p>
+<pre><code class="python">import pandas as pd
+import numpy as np
+import datetime
+%matplotlib inline
+</code></pre>
+
+<h2 id="the-last-run-time">The last run time</h2>
+<pre><code class="python">print(f&quot;This notebook last ran at {datetime.datetime.now()}&quot;)
+</code></pre>
+
+<pre><code>This notebook last ran at 2018-09-18 09:47:56.497449
+</code></pre>
+<h2 id="lets-make-a-dataframe">Let's make a dataframe</h2>
+<pre><code class="python">df = pd.DataFrame({&quot;time&quot;:np.arange(0, 10, 0.1)})
+df[&quot;amplitude&quot;] =  np.sin(df.time)
+</code></pre>
+
+<pre><code class="python">df
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="right">time</th>
+<th align="right">amplitude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">0.0998334</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">0.2</td>
+<td align="right">0.198669</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">0.3</td>
+<td align="right">0.29552</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">0.4</td>
+<td align="right">0.389418</td>
+</tr>
+</tbody>
+</table>
+<h3 id="and-plot-it">And plot it :)</h3>
+<pre><code class="python">df.plot()
+</code></pre>
+
+<pre><code>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1187f6eb8&gt;
+</code></pre>
+<p><img alt="png" src="output_8_1.png" /></p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
