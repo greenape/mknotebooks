@@ -12,7 +12,12 @@ try:
 except ImportError:
     from distutils.core import setup
 
-long_description = "mknotebooks is a convenient way to include Jupyter notebooks in your MkDocs projects."
+from os import path
+
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
+    long_description = f.read()
+
 __status__ = "Development"
 __author__ = "Jonathan Gray"
 __maintainer__ = "Jonathan Gray"
@@ -25,6 +30,8 @@ setup(
     cmdclass=versioneer.get_cmdclass(),
     entry_points={"mkdocs.plugins": ["mknotebooks = mknotebooks.plugin:Plugin"]},
     description="Plugin for mkdocs to generate markdown documents from jupyter notebooks.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author=__author__,
     author_email=__email__,
     url="https://github.com/greenape/mknotebooks",
