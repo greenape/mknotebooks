@@ -1,6 +1,7 @@
 site_name: mknotebooks
 repo_name: 'greenape/mknotebooks'
 repo_url: https://github.com/greenape/mknotebooks
+edit_uri: edit/master/examples/execute_with_preamble/docs/
 plugins:
   - mknotebooks:
       execute: true
