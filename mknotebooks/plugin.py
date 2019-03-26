@@ -28,6 +28,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
     config_scheme = (
         ("execute", mkdocs.config.config_options.Type(bool, default=False)),
         ("preamble", mkdocs.config.config_options.FilesystemObject()),
+        ("timeout", mkdocs.config.config_options.Type(int)),
     )
 
     def on_config(self, config):
@@ -44,6 +45,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                     "nbconvert_utils.ExecuteWithPreamble",
                 )
                 c.default_preprocessors = default_preprocessors
+                c.ExecutePreprocessor.timeout = self.config["timeout"]
                 c.ExecuteWithPreamble.enabled = True
                 c.ExecuteWithPreamble.preamble_scripts = [self.config["preamble"]]
             else:
