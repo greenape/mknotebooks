@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 mkdocs = "*"
-"5448283" = {editable = true, path = "./../.."}
+"mknotebooks" = {editable = true, path = "./../.."}
 numpy = "*"
 pandas = "*"
 matplotlib = "*"

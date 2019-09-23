@@ -29,6 +29,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ("execute", mkdocs.config.config_options.Type(bool, default=False)),
         ("preamble", mkdocs.config.config_options.FilesystemObject()),
         ("timeout", mkdocs.config.config_options.Type(int)),
+        ("write_markdown", mkdocs.config.config_options.Type(bool, default=False)),
     )
 
     def on_config(self, config):
@@ -73,6 +74,14 @@ class Plugin(mkdocs.plugins.BasePlugin):
             exporter = config["notebook_exporter"]
             body, resources = exporter.from_notebook_node(nb)
 
+            if self.config["write_markdown"]:
+                pathlib.Path(page.file.abs_dest_path).parent.mkdir(
+                    parents=True, exist_ok=True
+                )
+                with open(
+                    pathlib.Path(page.file.abs_src_path).with_suffix(".md.tmp"), "w"
+                ) as fout:
+                    fout.write(body)
             for fname, content in resources["outputs"].items():
                 pathlib.Path(page.file.abs_dest_path).parent.mkdir(
                     parents=True, exist_ok=True

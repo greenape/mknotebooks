@@ -6,3 +6,4 @@ plugins:
   - mknotebooks:
       execute: true
       preamble: "pandas_to_markdown.py"
+      write_markdown: true
