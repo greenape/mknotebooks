@@ -17,3 +17,7 @@ Any static images, plots, etc. will be extracted from the notebook and placed al
 ## Example
 
 An [example docs project](examples/execute_with_preamble) demonstrating the above is included. Try it out by running `pipenv install && pipenv run mkdocs serve`.
+
+## Inspecting generated markdown
+
+You can also export the generated markdown by setting `write_markdown: true` in your `mkdocs.yml`. This will write the generated markdown to a `.md.tmp` file alongside the original notebook.
