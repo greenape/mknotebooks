@@ -4,6 +4,24 @@ from traitlets.config import Config
 from nbconvert import MarkdownExporter
 import nbformat
 
+here = os.path.dirname(os.path.abspath(__file__))
+
+
+def remove_leading_indentation(s):
+    """
+    Custom Jinja filter which removes leading indentation (= exactly four spaces)
+    from a string and returns the result.
+
+    If the input string does not start with four spaces, an error is raised (unless
+    the input is the empty string, in which case it is returned unchanged).
+    """
+    if s == "":
+        return s
+    elif s.startswith("    "):
+        return s[4:]
+    else:
+        raise ValueError(f"Expected at least four leading whitespaces, but got string: {s!r}")
+
 
 class NotebookFile(mkdocs.structure.files.File):
     """
@@ -51,7 +69,12 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 c.ExecuteWithPreamble.preamble_scripts = [self.config["preamble"]]
             else:
                 c.Executor.enabled = True
-        config["notebook_exporter"] = MarkdownExporter(config=c)
+
+        template_file = os.path.join(here, "templates", "custom_markdown.tpl")
+        exporter = MarkdownExporter(config=c, template_file=template_file)
+        exporter.register_filter("remove_leading_indentation", remove_leading_indentation)
+
+        config["notebook_exporter"] = exporter
         return config
 
     def on_files(self, files, config):
