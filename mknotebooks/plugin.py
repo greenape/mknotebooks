@@ -16,17 +16,12 @@ def remove_leading_indentation(s):
     Custom Jinja filter which removes leading indentation (= exactly four spaces)
     from a string and returns the result.
 
-    If the input string does not start with four spaces, an error is raised (unless
-    the input is the empty string, in which case it is returned unchanged).
+    If the input string does not start with four spaces it is returned unchanged).
     """
-    if s == "" or s.startswith("!"):
-        return s
-    elif s.startswith("    "):
+    if s.startswith("    "):
         return s[4:]
     else:
-        raise ValueError(
-            f"Expected at least four leading whitespaces, but got string: {s!r}"
-        )
+        return s
 
 
 class NotebookFile(mkdocs.structure.files.File):
