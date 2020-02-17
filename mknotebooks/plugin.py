@@ -19,7 +19,7 @@ def remove_leading_indentation(s):
     If the input string does not start with four spaces, an error is raised (unless
     the input is the empty string, in which case it is returned unchanged).
     """
-    if s == "":
+    if s == "" or s.startswith("!"):
         return s
     elif s.startswith("    "):
         return s[4:]
