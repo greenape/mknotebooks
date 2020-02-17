@@ -44,10 +44,10 @@ setup(
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
-"License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.6",
-"Programming Language :: Python :: 3.7",
-"Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Natural Language :: English",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: POSIX",

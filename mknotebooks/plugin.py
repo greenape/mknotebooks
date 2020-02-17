@@ -1,8 +1,12 @@
-import mkdocs, pathlib, os
-from mkdocs.structure.files import Files
-from traitlets.config import Config
-from nbconvert import MarkdownExporter
+import os
+import pathlib
+
+import mkdocs
+import nbconvert
 import nbformat
+from mkdocs.structure.files import Files
+from nbconvert import MarkdownExporter
+from traitlets.config import Config
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -20,7 +24,9 @@ def remove_leading_indentation(s):
     elif s.startswith("    "):
         return s[4:]
     else:
-        raise ValueError(f"Expected at least four leading whitespaces, but got string: {s!r}")
+        raise ValueError(
+            f"Expected at least four leading whitespaces, but got string: {s!r}"
+        )
 
 
 class NotebookFile(mkdocs.structure.files.File):
@@ -71,8 +77,21 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 c.Executor.enabled = True
 
         template_file = os.path.join(here, "templates", "custom_markdown.tpl")
-        exporter = MarkdownExporter(config=c, template_file=template_file)
-        exporter.register_filter("remove_leading_indentation", remove_leading_indentation)
+        built_in_templates = os.path.join(
+            os.path.dirname(nbconvert.__file__), "templates"
+        )
+        exporter = MarkdownExporter(
+            config=c,
+            template_file=template_file,
+            template_path=[
+                os.path.join(here, "templates"),
+                built_in_templates,
+                os.path.join(built_in_templates, "skeleton"),
+            ],
+        )
+        exporter.register_filter(
+            "remove_leading_indentation", remove_leading_indentation
+        )
 
         config["notebook_exporter"] = exporter
         return config
@@ -89,7 +108,6 @@ class Plugin(mkdocs.plugins.BasePlugin):
         return files
 
     def on_page_read_source(self, _, page, config):
-        print(page)
         if str(page.file.abs_src_path).endswith("ipynb"):
             with open(page.file.abs_src_path) as nbin:
                 nb = nbformat.read(nbin, 4)
