@@ -4,6 +4,8 @@
 Setup configuration for `mktheapidocs`.
 
 """
+from os import path
+
 import versioneer
 
 try:
@@ -12,7 +14,6 @@ try:
 except ImportError:
     from distutils.core import setup
 
-from os import path
 
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
@@ -39,7 +40,7 @@ setup(
     keywords="mkdocs documentation markdown",
     packages=["mknotebooks"],
     include_package_data=True,
-    install_requires=["nbconvert", "nbconvert-utils", "mkdocs", "jupyter_client"],
+    install_requires=["nbconvert", "mkdocs", "jupyter_client"],
     platforms=["MacOS X", "Linux"],
     classifiers=[
         "Development Status :: 3 - Alpha",

@@ -10,6 +10,8 @@ from mkdocs.structure.files import File, Files
 from nbconvert import HTMLExporter, MarkdownExporter
 from traitlets.config import Config
 
+from mknotebooks.extra_args_execute_preprocessor import ExtraArgsExecutePreprocessor
+
 log = logging.getLogger(__name__)
 
 here = os.path.dirname(os.path.abspath(__file__))
@@ -63,17 +65,18 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 default_preprocessors = MarkdownExporter.default_preprocessors.default_args[
                     0
                 ]
-                default_preprocessors.insert(
+                default_preprocessors[
                     default_preprocessors.index(
                         "nbconvert.preprocessors.ExecutePreprocessor"
-                    ),
-                    "nbconvert_utils.ExecuteWithPreamble",
-                )
+                    )
+                ] = ExtraArgsExecutePreprocessor
                 c.default_preprocessors = default_preprocessors
                 c.ExecutePreprocessor.timeout = self.config["timeout"]
                 c.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
-                c.ExecuteWithPreamble.enabled = True
-                c.ExecuteWithPreamble.preamble_scripts = [self.config["preamble"]]
+                c.ExtraArgsExecutePreprocessor.enabled = True
+                c.ExtraArgsExecutePreprocessor.extra_arguments = [
+                    f"--InteractiveShellApp.exec_files=['{self.config['preamble']}']",
+                ]
                 c.file_extension = ".md"
             else:
                 c.Executor.enabled = True
