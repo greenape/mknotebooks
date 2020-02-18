@@ -70,6 +70,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 )
                 c.default_preprocessors = default_preprocessors
                 c.ExecutePreprocessor.timeout = self.config["timeout"]
+                c.ExecutePreprocessor.allow_errors = True
                 c.ExecuteWithPreamble.enabled = True
                 c.ExecuteWithPreamble.preamble_scripts = [self.config["preamble"]]
                 c.file_extension = ".md"
@@ -80,6 +81,18 @@ class Plugin(mkdocs.plugins.BasePlugin):
         built_in_templates = os.path.join(
             os.path.dirname(nbconvert.__file__), "templates"
         )
+        c.NbConvertBase.display_data_priority = [
+            "application/vnd.jupyter.widget-state+json",
+            "application/vnd.jupyter.widget-view+json",
+            "application/javascript",
+            "text/markdown",
+            "text/html",
+            "image/svg+xml",
+            "text/latex",
+            "image/png",
+            "image/jpeg",
+            "text/plain",
+        ]
         exporter = HTMLExporter(
             config=c,
             template_file=template_file,
@@ -123,6 +136,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
 
             exporter = config["notebook_exporter"]
             body, resources = exporter.from_notebook_node(nb)
+            exporter._environment_cached = None
 
             if self.config["write_markdown"]:
                 pathlib.Path(page.file.abs_dest_path).parent.mkdir(
