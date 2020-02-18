@@ -1,12 +1,16 @@
+import logging
 import os
 import pathlib
+from shutil import copy
 
 import mkdocs
 import nbconvert
 import nbformat
-from mkdocs.structure.files import Files
-from nbconvert import MarkdownExporter
+from mkdocs.structure.files import File, Files
+from nbconvert import HTMLExporter, MarkdownExporter
 from traitlets.config import Config
+
+log = logging.getLogger(__name__)
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -68,6 +72,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 c.ExecutePreprocessor.timeout = self.config["timeout"]
                 c.ExecuteWithPreamble.enabled = True
                 c.ExecuteWithPreamble.preamble_scripts = [self.config["preamble"]]
+                c.file_extension = ".md"
             else:
                 c.Executor.enabled = True
 
@@ -75,12 +80,13 @@ class Plugin(mkdocs.plugins.BasePlugin):
         built_in_templates = os.path.join(
             os.path.dirname(nbconvert.__file__), "templates"
         )
-        exporter = MarkdownExporter(
+        exporter = HTMLExporter(
             config=c,
             template_file=template_file,
             template_path=[
                 os.path.join(here, "templates"),
                 built_in_templates,
+                os.path.join(built_in_templates, "html"),
                 os.path.join(built_in_templates, "skeleton"),
             ],
         )
@@ -89,9 +95,16 @@ class Plugin(mkdocs.plugins.BasePlugin):
         )
 
         config["notebook_exporter"] = exporter
+        config["extra_css"].append(os.path.join("css", "ansi-colours.css"))
         return config
 
     def on_files(self, files, config):
+        ansi_colours_css = File(
+            path="ansi-colours.css",
+            src_dir=os.path.join(here, "templates"),
+            dest_dir=os.path.join(config["site_dir"], "css"),
+            use_directory_urls=False,
+        )
         files = Files(
             [
                 NotebookFile(f, **config)
@@ -99,6 +112,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 else f
                 for f in files
             ]
+            + [ansi_colours_css]
         )
         return files
 
@@ -118,13 +132,14 @@ class Plugin(mkdocs.plugins.BasePlugin):
                     pathlib.Path(page.file.abs_src_path).with_suffix(".md.tmp"), "w"
                 ) as fout:
                     fout.write(body)
-            for fname, content in resources["outputs"].items():
-                pathlib.Path(page.file.abs_dest_path).parent.mkdir(
-                    parents=True, exist_ok=True
-                )
-                with open(
-                    pathlib.Path(page.file.abs_dest_path).parent / fname, "wb"
-                ) as fout:
-                    fout.write(content)
+            if hasattr(resources["outputs"], "items"):
+                for fname, content in resources["outputs"].items():
+                    pathlib.Path(page.file.abs_dest_path).parent.mkdir(
+                        parents=True, exist_ok=True
+                    )
+                    with open(
+                        pathlib.Path(page.file.abs_dest_path).parent / fname, "wb"
+                    ) as fout:
+                        fout.write(content)
             return body
         return None
