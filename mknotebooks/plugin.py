@@ -73,6 +73,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
             c.ExecutePreprocessor.timeout = self.config["timeout"]
             c.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
             c.ExtraArgsExecutePreprocessor.enabled = True
+            c.ExtractOutputPreprocessor.enabled = True
             preamble = [os.path.join(here, "pandas_output_formatter.py")]
 
             c.file_extension = ".md"
