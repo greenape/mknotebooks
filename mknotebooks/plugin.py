@@ -50,6 +50,7 @@ class NotebookFile(mkdocs.structure.files.File):
 class Plugin(mkdocs.plugins.BasePlugin):
     config_scheme = (
         ("execute", mkdocs.config.config_options.Type(bool, default=False)),
+        ("allow_errors", mkdocs.config.config_options.Type(bool, default=False)),
         ("preamble", mkdocs.config.config_options.FilesystemObject()),
         ("timeout", mkdocs.config.config_options.Type(int)),
         ("write_markdown", mkdocs.config.config_options.Type(bool, default=False)),
@@ -70,7 +71,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 )
                 c.default_preprocessors = default_preprocessors
                 c.ExecutePreprocessor.timeout = self.config["timeout"]
-                c.ExecutePreprocessor.allow_errors = True
+                c.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
                 c.ExecuteWithPreamble.enabled = True
                 c.ExecuteWithPreamble.preamble_scripts = [self.config["preamble"]]
                 c.file_extension = ".md"
