@@ -61,25 +61,26 @@ class Plugin(mkdocs.plugins.BasePlugin):
     def on_config(self, config):
         c = Config()
         if self.config["execute"]:
+            default_preprocessors = MarkdownExporter.default_preprocessors.default_args[
+                0
+            ]
+            default_preprocessors[
+                default_preprocessors.index(
+                    "nbconvert.preprocessors.ExecutePreprocessor"
+                )
+            ] = ExtraArgsExecutePreprocessor
+            c.default_preprocessors = default_preprocessors
+            c.ExecutePreprocessor.timeout = self.config["timeout"]
+            c.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
+            c.ExtraArgsExecutePreprocessor.enabled = True
+            preamble = [os.path.join(here, "pandas_output_formatter.py")]
+
+            c.file_extension = ".md"
             if self.config["preamble"]:
-                default_preprocessors = MarkdownExporter.default_preprocessors.default_args[
-                    0
-                ]
-                default_preprocessors[
-                    default_preprocessors.index(
-                        "nbconvert.preprocessors.ExecutePreprocessor"
-                    )
-                ] = ExtraArgsExecutePreprocessor
-                c.default_preprocessors = default_preprocessors
-                c.ExecutePreprocessor.timeout = self.config["timeout"]
-                c.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
-                c.ExtraArgsExecutePreprocessor.enabled = True
-                c.ExtraArgsExecutePreprocessor.extra_arguments = [
-                    f"--InteractiveShellApp.exec_files=['{self.config['preamble']}']",
-                ]
-                c.file_extension = ".md"
-            else:
-                c.Executor.enabled = True
+                preamble.append(self.config["preamble"])
+            c.ExtraArgsExecutePreprocessor.extra_arguments = [
+                f"--InteractiveShellApp.exec_files={preamble}",
+            ]
 
         template_file = os.path.join(here, "templates", "custom_markdown.tpl")
         built_in_templates = os.path.join(
@@ -140,7 +141,6 @@ class Plugin(mkdocs.plugins.BasePlugin):
 
             exporter = config["notebook_exporter"]
             body, resources = exporter.from_notebook_node(nb)
-            exporter._environment_cached = None
 
             if self.config["write_markdown"]:
                 pathlib.Path(page.file.abs_dest_path).parent.mkdir(
