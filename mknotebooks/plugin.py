@@ -115,13 +115,22 @@ class Plugin(mkdocs.plugins.BasePlugin):
 
         config["notebook_exporter"] = exporter
         config["extra_css"].append(os.path.join("css", "ansi-colours.css"))
+        config["extra_css"].append(os.path.join("css", "pandas-dataframe.css"))
         return config
 
     def on_files(self, files, config):
+        templates_dir = os.path.join(here, "templates")
+        css_dest_dir = os.path.join(config["site_dir"], "css")
         ansi_colours_css = File(
             path="ansi-colours.css",
-            src_dir=os.path.join(here, "templates"),
-            dest_dir=os.path.join(config["site_dir"], "css"),
+            src_dir=templates_dir,
+            dest_dir=css_dest_dir,
+            use_directory_urls=False,
+        )
+        pandas_dataframe_css = File(
+            path="pandas-dataframe.css",
+            src_dir=templates_dir,
+            dest_dir=css_dest_dir,
             use_directory_urls=False,
         )
         files = Files(
@@ -131,7 +140,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 else f
                 for f in files
             ]
-            + [ansi_colours_css]
+            + [ansi_colours_css, pandas_dataframe_css]
         )
         return files
 
