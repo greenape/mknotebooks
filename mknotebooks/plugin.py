@@ -17,19 +17,6 @@ log = logging.getLogger(__name__)
 here = os.path.dirname(os.path.abspath(__file__))
 
 
-def remove_leading_indentation(s):
-    """
-    Custom Jinja filter which removes leading indentation (= exactly four spaces)
-    from a string and returns the result.
-
-    If the input string does not start with four spaces it is returned unchanged).
-    """
-    if s.startswith("    "):
-        return s[4:]
-    else:
-        return s
-
-
 class NotebookFile(mkdocs.structure.files.File):
     """
     Wraps a regular File object to make ipynb files appear as
@@ -108,9 +95,6 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 os.path.join(built_in_templates, "html"),
                 os.path.join(built_in_templates, "skeleton"),
             ],
-        )
-        exporter.register_filter(
-            "remove_leading_indentation", remove_leading_indentation
         )
 
         config["notebook_exporter"] = exporter
