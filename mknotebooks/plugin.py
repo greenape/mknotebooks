@@ -116,6 +116,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         config["notebook_exporter"] = exporter
         config["extra_css"].append(os.path.join("css", "ansi-colours.css"))
         config["extra_css"].append(os.path.join("css", "pandas-dataframe.css"))
+        config["extra_css"].append(os.path.join("css", "jupyter-cells.css"))
         return config
 
     def on_files(self, files, config):
@@ -133,6 +134,12 @@ class Plugin(mkdocs.plugins.BasePlugin):
             dest_dir=css_dest_dir,
             use_directory_urls=False,
         )
+        jupyter_cells_css = File(
+            path="jupyter-cells.css",
+            src_dir=templates_dir,
+            dest_dir=css_dest_dir,
+            use_directory_urls=False,
+        )
         files = Files(
             [
                 NotebookFile(f, **config)
@@ -140,7 +147,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 else f
                 for f in files
             ]
-            + [ansi_colours_css, pandas_dataframe_css]
+            + [ansi_colours_css, pandas_dataframe_css, jupyter_cells_css]
         )
         return files
 
