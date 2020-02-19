@@ -1,7 +1,6 @@
 import logging
 import os
 import pathlib
-from shutil import copy
 
 import mkdocs
 import nbconvert
