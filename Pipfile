@@ -4,10 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
 
 [packages]
 twine = "*"
+mkdocs = "*"
 nbconvert = "*"
+
+
 
 [requires]
 python_version = "3.7"
