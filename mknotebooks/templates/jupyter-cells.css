@@ -5,6 +5,6 @@
 
 /* Output cells */
 .output pre {
-    /* add a different background color here if you want to change the default */
+    background-color: #ececec80;
     padding: 10px;
 }
