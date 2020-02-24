@@ -1,10 +1,10 @@
 /* Input cells */
-.md-typeset .input code, .md-typeset .input pre {
+.input code, .input pre {
     background-color: #3333aa11;
 }
 
 /* Output cells */
-.md-typeset .output pre {
+.output pre {
     /* add a different background color here if you want to change the default */
     padding: 10px;
 }
