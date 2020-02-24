@@ -143,6 +143,9 @@ class Plugin(mkdocs.plugins.BasePlugin):
             exporter = config["notebook_exporter"]
             body, resources = exporter.from_notebook_node(nb)
 
+            # nbconvert uses the anchor-link class, convert it to the mkdocs convention
+            body = body.replace('class="anchor-link"', 'class="headerlink"')
+
             if self.config["write_markdown"]:
                 pathlib.Path(page.file.abs_dest_path).parent.mkdir(
                     parents=True, exist_ok=True
