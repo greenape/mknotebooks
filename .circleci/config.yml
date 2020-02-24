@@ -73,8 +73,6 @@ jobs:
 workflows:
   run_build_pipeline:
     jobs:
-      - run_tests:
-          <<: *run_always_org_context
       - lint_python:
           <<: *run_always_org_context
       - build_python_wheel:
@@ -82,6 +80,5 @@ workflows:
       - push_wheel:
           requires:
             - lint_python
-            - run_tests
             - build_python_wheel
           <<: *tag_and_master_only_org_context
