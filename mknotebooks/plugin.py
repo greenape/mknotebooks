@@ -135,7 +135,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         )
         return files
 
-    def on_page_read_source(self, _, page, config):
+    def on_page_read_source(self, page, config):
         if str(page.file.abs_src_path).endswith("ipynb"):
             with open(page.file.abs_src_path) as nbin:
                 nb = nbformat.read(nbin, 4)
