@@ -15,6 +15,13 @@ By default, execution will be aborted if any of the cells throws an error, but y
 
 Any static images, plots, etc. will be extracted from the notebook and placed alongside the output HTML.
 
+Mknotebooks applies default styling to improve the appearance of notebook input/output cells and pandas dataframes. If these interfere with any other CSS stylesheets that you're using, you can disable these via the following options.
+```
+- mknotebooks:
+   enable-default-jupyter-cell-styling: false
+   enable-default-pandas-dataframe-styling: false
+```
+
 ## Example
 
 An [example docs project](examples/execute_with_preamble) demonstrating the above is included. Try it out by running `pipenv install && pipenv run mkdocs serve`.
