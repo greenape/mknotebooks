@@ -1,0 +1,84 @@
+version: 2.1
+
+defaults:
+  - &base_docker
+    - image: circleci/python:3.7
+  - &run_always_org_context
+    context: org-global
+    filters:
+      tags:
+        only: /.*/
+      branches:
+        ignore: gh-pages
+  - &master_only_org_context
+    context: org-global
+    filters:
+      branches:
+        only: master
+  - &tag_only_org_context
+    context: org-global
+    filters:
+      branches:
+        ignore: /.*/
+      tags:
+        only: /.*/
+  - &tag_and_master_only_org_context
+    context: org-global
+    filters:
+      branches:
+        only: master
+      tags:
+        only: /.*/
+
+jobs:
+  lint_python:
+    docker: *base_docker
+    working_directory: /home/circleci/project
+    steps:
+      - checkout
+      - run:
+          name: Linting files with black
+          command: |
+            pip install black
+            black --check .
+
+  build_python_wheel:
+    docker: *base_docker
+    working_directory: /home/circleci/project/
+    steps:
+      - checkout:
+          path: /home/circleci/project/
+      - run:
+          name: Building wheel
+          command: python setup.py bdist_wheel
+      - persist_to_workspace:
+          root: /home/circleci/project
+          paths:
+            - dist
+      - store_artifacts:
+          path: /home/circleci/project/dist
+          destination: wheel
+
+  push_wheel:
+    docker: *base_docker
+    steps:
+      - attach_workspace:
+          at: /home/circleci/
+      - run:
+          name: Upload Wheel
+          command: |
+            pip install twine
+            twine upload /home/circleci/dist/*
+
+workflows:
+  run_build_pipeline:
+    jobs:
+      - lint_python:
+          <<: *run_always_org_context
+      - build_python_wheel:
+          <<: *run_always_org_context
+      - push_wheel:
+          requires:
+            - lint_python
+            - build_python_wheel
+          <<: *tag_and_master_only_org_context

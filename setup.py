@@ -9,7 +9,7 @@ from os import path
 import versioneer
 
 try:
-    from setuptools import setup, find_packages
+    from setuptools import setup
 
 except ImportError:
     from distutils.core import setup
@@ -40,7 +40,7 @@ setup(
     keywords="mkdocs documentation markdown",
     packages=["mknotebooks"],
     include_package_data=True,
-    install_requires=["nbconvert", "mkdocs", "jupyter_client"],
+    install_requires=["nbconvert", "mkdocs>=1.1", "jupyter_client"],
     platforms=["MacOS X", "Linux"],
     classifiers=[
         "Development Status :: 3 - Alpha",

@@ -134,13 +134,16 @@ class Plugin(mkdocs.plugins.BasePlugin):
         )
         return files
 
-    def on_page_read_source(self, _, page, config):
+    def on_page_read_source(self, page, config):
         if str(page.file.abs_src_path).endswith("ipynb"):
             with open(page.file.abs_src_path) as nbin:
                 nb = nbformat.read(nbin, 4)
 
             exporter = config["notebook_exporter"]
             body, resources = exporter.from_notebook_node(nb)
+
+            # nbconvert uses the anchor-link class, convert it to the mkdocs convention
+            body = body.replace('class="anchor-link"', 'class="headerlink"')
 
             if self.config["write_markdown"]:
                 pathlib.Path(page.file.abs_dest_path).parent.mkdir(
