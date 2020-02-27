@@ -16,19 +16,6 @@ log = logging.getLogger(__name__)
 here = os.path.dirname(os.path.abspath(__file__))
 
 
-def remove_leading_indentation(s):
-    """
-    Custom Jinja filter which removes leading indentation (= exactly four spaces)
-    from a string and returns the result.
-
-    If the input string does not start with four spaces it is returned unchanged).
-    """
-    if s.startswith("    "):
-        return s[4:]
-    else:
-        return s
-
-
 class NotebookFile(mkdocs.structure.files.File):
     """
     Wraps a regular File object to make ipynb files appear as
@@ -55,10 +42,12 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ("preamble", mkdocs.config.config_options.FilesystemObject()),
         ("timeout", mkdocs.config.config_options.Type(int)),
         ("write_markdown", mkdocs.config.config_options.Type(bool, default=False)),
+        ("enable_default_jupyter_cell_styling", mkdocs.config.config_options.Type(bool, default=True)),
+        ("enable_default_pandas_dataframe_styling", mkdocs.config.config_options.Type(bool, default=True)),
     )
 
     def on_config(self, config):
-        c = Config()
+        exporter_config = Config()
         if self.config["execute"]:
             default_preprocessors = MarkdownExporter.default_preprocessors.default_args[
                 0
@@ -68,17 +57,17 @@ class Plugin(mkdocs.plugins.BasePlugin):
                     "nbconvert.preprocessors.ExecutePreprocessor"
                 )
             ] = ExtraArgsExecutePreprocessor
-            c.default_preprocessors = default_preprocessors
-            c.ExecutePreprocessor.timeout = self.config["timeout"]
-            c.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
-            c.ExtraArgsExecutePreprocessor.enabled = True
-            c.ExtractOutputPreprocessor.enabled = True
+            exporter_config.default_preprocessors = default_preprocessors
+            exporter_config.ExecutePreprocessor.timeout = self.config["timeout"]
+            exporter_config.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
+            exporter_config.ExtraArgsExecutePreprocessor.enabled = True
+            exporter_config.ExtractOutputPreprocessor.enabled = True
             preamble = [os.path.join(here, "pandas_output_formatter.py")]
 
-            c.file_extension = ".md"
+            exporter_config.file_extension = ".md"
             if self.config["preamble"]:
                 preamble.append(self.config["preamble"])
-            c.ExtraArgsExecutePreprocessor.extra_arguments = [
+            exporter_config.ExtraArgsExecutePreprocessor.extra_arguments = [
                 f"--InteractiveShellApp.exec_files={preamble}",
             ]
 
@@ -86,7 +75,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         built_in_templates = os.path.join(
             os.path.dirname(nbconvert.__file__), "templates"
         )
-        c.NbConvertBase.display_data_priority = [
+        exporter_config.NbConvertBase.display_data_priority = [
             "application/vnd.jupyter.widget-state+json",
             "application/vnd.jupyter.widget-view+json",
             "application/javascript",
@@ -99,7 +88,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "text/plain",
         ]
         exporter = HTMLExporter(
-            config=c,
+            config=exporter_config,
             template_file=template_file,
             template_path=[
                 os.path.join(here, "templates"),
@@ -108,19 +97,34 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 os.path.join(built_in_templates, "skeleton"),
             ],
         )
-        exporter.register_filter(
-            "remove_leading_indentation", remove_leading_indentation
-        )
 
         config["notebook_exporter"] = exporter
         config["extra_css"].append(os.path.join("css", "ansi-colours.css"))
+        if self.config["enable_default_jupyter_cell_styling"]:
+            config["extra_css"].append(os.path.join("css", "jupyter-cells.css"))
+        if self.config["enable_default_pandas_dataframe_styling"]:
+            config["extra_css"].append(os.path.join("css", "pandas-dataframe.css"))
         return config
 
     def on_files(self, files, config):
+        templates_dir = os.path.join(here, "templates")
+        css_dest_dir = os.path.join(config["site_dir"], "css")
         ansi_colours_css = File(
             path="ansi-colours.css",
-            src_dir=os.path.join(here, "templates"),
-            dest_dir=os.path.join(config["site_dir"], "css"),
+            src_dir=templates_dir,
+            dest_dir=css_dest_dir,
+            use_directory_urls=False,
+        )
+        pandas_dataframe_css = File(
+            path="pandas-dataframe.css",
+            src_dir=templates_dir,
+            dest_dir=css_dest_dir,
+            use_directory_urls=False,
+        )
+        jupyter_cells_css = File(
+            path="jupyter-cells.css",
+            src_dir=templates_dir,
+            dest_dir=css_dest_dir,
             use_directory_urls=False,
         )
         files = Files(
@@ -130,7 +134,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 else f
                 for f in files
             ]
-            + [ansi_colours_css]
+            + [ansi_colours_css, pandas_dataframe_css, jupyter_cells_css]
         )
         return files
 
