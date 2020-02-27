@@ -15,8 +15,8 @@
 {% endblock input_group %}
 
 {% block output_group %}
-<div class="output_wrapper">
-<div class="output">
+<div class="output_wrapper" markdown="1">
+<div class="output" markdown="1">
 {{ super() }}
 </div>
 </div>
@@ -43,16 +43,16 @@
 
 
 {% block output %}
-<div class="output_area">
+<div class="output_area" markdown="1">
 {{ super() }}
 </div>
 {% endblock output %}
 
 {% block markdowncell scoped %}
-<div class="cell border-box-sizing text_cell rendered{{ celltags(cell) }}">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-{{ cell.source  | markdown2html | strip_files_prefix }}
+<div class="cell border-box-sizing text_cell rendered{{ celltags(cell) }}" markdown="1">
+<div class="inner_cell" markdown="1">
+<div class="text_cell_render border-box-sizing rendered_html" markdown="1">
+{{ cell.source  }}
 </div>
 </div>
 </div>
@@ -103,9 +103,7 @@ unknown type  {{ cell.type }}
 {%- endblock data_html %}
 
 {% block data_markdown scoped -%}
-<div class="output_markdown rendered_html output_subarea {{ extra_class }}">
-{{ output.data['text/markdown'] | markdown2html }}
-</div>
+{{ output.data['text/markdown'] }}
 {%- endblock data_markdown %}
 
 {% block data_png scoped %}

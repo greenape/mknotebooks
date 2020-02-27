@@ -2,10 +2,14 @@ import logging
 import os
 import pathlib
 
+import markdown
 import mkdocs
 import nbconvert
 import nbformat
+from mkdocs.config.base import Config as MkDocsConfig
 from mkdocs.structure.files import File, Files
+from mkdocs.structure.pages import Page, _RelativePathExtension
+from mkdocs.structure.toc import get_toc
 from nbconvert import HTMLExporter, MarkdownExporter
 from traitlets.config import Config
 
@@ -52,7 +56,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ),
     )
 
-    def on_config(self, config):
+    def on_config(self, config: MkDocsConfig):
         exporter_config = Config()
         if self.config["execute"]:
             default_preprocessors = MarkdownExporter.default_preprocessors.default_args[
@@ -176,3 +180,23 @@ class Plugin(mkdocs.plugins.BasePlugin):
                         fout.write(content)
             return body
         return None
+
+    def on_page_content(
+        self, html: str, page: Page, config: MkDocsConfig, files: Files
+    ):
+        if str(page.file.abs_src_path).endswith("ipynb") and not (
+            "markdown.extensions.md_in_html" in config["markdown_extensions"]
+            or "markdown.extensions.extra" in config["markdown_extensions"]
+        ):
+            log.debug(f"Re-rendering page with markdown in divs: {page}")
+            extensions = [
+                _RelativePathExtension(page.file, files),
+                "markdown.extensions.md_in_html",
+            ] + config["markdown_extensions"]
+            md = markdown.Markdown(
+                extensions=extensions, extension_configs=config["mdx_configs"] or {}
+            )
+            html = md.convert(page.markdown)
+            page.toc = get_toc(getattr(md, "toc_tokens", []))
+
+        return html
