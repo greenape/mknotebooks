@@ -42,8 +42,14 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ("preamble", mkdocs.config.config_options.FilesystemObject()),
         ("timeout", mkdocs.config.config_options.Type(int)),
         ("write_markdown", mkdocs.config.config_options.Type(bool, default=False)),
-        ("enable_default_jupyter_cell_styling", mkdocs.config.config_options.Type(bool, default=True)),
-        ("enable_default_pandas_dataframe_styling", mkdocs.config.config_options.Type(bool, default=True)),
+        (
+            "enable_default_jupyter_cell_styling",
+            mkdocs.config.config_options.Type(bool, default=True),
+        ),
+        (
+            "enable_default_pandas_dataframe_styling",
+            mkdocs.config.config_options.Type(bool, default=True),
+        ),
     )
 
     def on_config(self, config):
@@ -59,7 +65,9 @@ class Plugin(mkdocs.plugins.BasePlugin):
             ] = ExtraArgsExecutePreprocessor
             exporter_config.default_preprocessors = default_preprocessors
             exporter_config.ExecutePreprocessor.timeout = self.config["timeout"]
-            exporter_config.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
+            exporter_config.ExecutePreprocessor.allow_errors = self.config[
+                "allow_errors"
+            ]
             exporter_config.ExtraArgsExecutePreprocessor.enabled = True
             exporter_config.ExtractOutputPreprocessor.enabled = True
             preamble = [os.path.join(here, "pandas_output_formatter.py")]
