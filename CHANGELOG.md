@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Added default CSS stylesheets for nicer styling of notebook input/output cells and pandas dataframes,
-  as well as two options (`enable-default-jupyter-cell-styling`, `enable-default-pandas-dataframe-styling`)
+  as well as two options (`enable_default_jupyter_cell_styling`, `enable_default_pandas_dataframe_styling`)
   to enable or disable them [#13](https://github.com/greenape/mknotebooks/pull/13)  (thanks to [@maxalbert](https://github.com/maxalbert))
 
 ### Changed

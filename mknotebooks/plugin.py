@@ -42,8 +42,8 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ("preamble", mkdocs.config.config_options.FilesystemObject()),
         ("timeout", mkdocs.config.config_options.Type(int)),
         ("write_markdown", mkdocs.config.config_options.Type(bool, default=False)),
-        ("enable-default-jupyter-cell-styling", mkdocs.config.config_options.Type(bool, default=True)),
-        ("enable-default-pandas-dataframe-styling", mkdocs.config.config_options.Type(bool, default=True)),
+        ("enable_default_jupyter_cell_styling", mkdocs.config.config_options.Type(bool, default=True)),
+        ("enable_default_pandas_dataframe_styling", mkdocs.config.config_options.Type(bool, default=True)),
     )
 
     def on_config(self, config):
@@ -100,9 +100,9 @@ class Plugin(mkdocs.plugins.BasePlugin):
 
         config["notebook_exporter"] = exporter
         config["extra_css"].append(os.path.join("css", "ansi-colours.css"))
-        if self.config["enable-default-jupyter-cell-styling"]:
+        if self.config["enable_default_jupyter_cell_styling"]:
             config["extra_css"].append(os.path.join("css", "jupyter-cells.css"))
-        if self.config["enable-default-pandas-dataframe-styling"]:
+        if self.config["enable_default_pandas_dataframe_styling"]:
             config["extra_css"].append(os.path.join("css", "pandas-dataframe.css"))
         return config
 

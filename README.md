@@ -18,8 +18,8 @@ Any static images, plots, etc. will be extracted from the notebook and placed al
 Mknotebooks applies default styling to improve the appearance of notebook input/output cells and pandas dataframes. If these interfere with any other CSS stylesheets that you're using, you can disable these via the following options.
 ```
 - mknotebooks:
-   enable-default-jupyter-cell-styling: false
-   enable-default-pandas-dataframe-styling: false
+   enable_default_jupyter_cell_styling: false
+   enable_default_pandas_dataframe_styling: false
 ```
 
 ## Example
