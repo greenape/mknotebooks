@@ -47,7 +47,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
     )
 
     def on_config(self, config):
-        c = Config()
+        exporter_config = Config()
         if self.config["execute"]:
             default_preprocessors = MarkdownExporter.default_preprocessors.default_args[
                 0
@@ -57,17 +57,17 @@ class Plugin(mkdocs.plugins.BasePlugin):
                     "nbconvert.preprocessors.ExecutePreprocessor"
                 )
             ] = ExtraArgsExecutePreprocessor
-            c.default_preprocessors = default_preprocessors
-            c.ExecutePreprocessor.timeout = self.config["timeout"]
-            c.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
-            c.ExtraArgsExecutePreprocessor.enabled = True
-            c.ExtractOutputPreprocessor.enabled = True
+            exporter_config.default_preprocessors = default_preprocessors
+            exporter_config.ExecutePreprocessor.timeout = self.config["timeout"]
+            exporter_config.ExecutePreprocessor.allow_errors = self.config["allow_errors"]
+            exporter_config.ExtraArgsExecutePreprocessor.enabled = True
+            exporter_config.ExtractOutputPreprocessor.enabled = True
             preamble = [os.path.join(here, "pandas_output_formatter.py")]
 
-            c.file_extension = ".md"
+            exporter_config.file_extension = ".md"
             if self.config["preamble"]:
                 preamble.append(self.config["preamble"])
-            c.ExtraArgsExecutePreprocessor.extra_arguments = [
+            exporter_config.ExtraArgsExecutePreprocessor.extra_arguments = [
                 f"--InteractiveShellApp.exec_files={preamble}",
             ]
 
@@ -75,7 +75,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         built_in_templates = os.path.join(
             os.path.dirname(nbconvert.__file__), "templates"
         )
-        c.NbConvertBase.display_data_priority = [
+        exporter_config.NbConvertBase.display_data_priority = [
             "application/vnd.jupyter.widget-state+json",
             "application/vnd.jupyter.widget-view+json",
             "application/javascript",
@@ -88,7 +88,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "text/plain",
         ]
         exporter = HTMLExporter(
-            config=c,
+            config=exporter_config,
             template_file=template_file,
             template_path=[
                 os.path.join(here, "templates"),
