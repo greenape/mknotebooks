@@ -1,6 +1,8 @@
 import logging
 import os
 import pathlib
+import re
+from binascii import a2b_base64
 
 import markdown
 import mkdocs
@@ -159,10 +161,26 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 nb = nbformat.read(nbin, 4)
 
             exporter = config["notebook_exporter"]
+            # Extract attachments, because mkdocs' markdown renderer doesn't cope with them
+            for cell in nb["cells"]:
+                attachments = cell.get("attachments", {})
+                for attachment_name, attachment in attachments.items():
+                    pathlib.Path(page.file.abs_dest_path).parent.mkdir(
+                        parents=True, exist_ok=True
+                    )
+                    with open(
+                        pathlib.Path(page.file.abs_dest_path).parent / attachment_name,
+                        "wb",
+                    ) as fout:
+                        for mimetype, data in attachment.items():
+                            fout.write(a2b_base64(data))
             body, resources = exporter.from_notebook_node(nb)
 
             # nbconvert uses the anchor-link class, convert it to the mkdocs convention
             body = body.replace('class="anchor-link"', 'class="headerlink"')
+            body = re.compile("\(attachment:([a-z_\-A-Z0-9]+\.(png|jpg|svg))\)").sub(
+                r"(\1)", body
+            )
 
             if self.config["write_markdown"]:
                 pathlib.Path(page.file.abs_dest_path).parent.mkdir(
