@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
+## [0.3.2]
+### Fixed
+- Fixed pandas tables not being parsed
+
 ## [0.3.1]
 ### Fixed
 - Fixed the toc extension not adding a table of contents
@@ -31,7 +35,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Compatibility with mkdocs 1.1. [#14](https://github.com/greenape/mknotebooks/pull/14) (thanks to [@lgeiger](https://github.com/lgeiger))
 - Set the correct class on headerlink. [#16](https://github.com/greenape/mknotebooks/pull/16) (thanks to [@lgeiger](https://github.com/lgeiger))
 
-[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.3.1...master
+[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.3.2...master
+[0.3.2]: https://github.com/greenape/mktheapidocs/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/greenape/mktheapidocs/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/greenape/mktheapidocs/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/greenape/mktheapidocs/compare/0.1.16...0.2.0
