@@ -3,7 +3,7 @@
 
 
 {% block codecell %}
-<div class="cell border-box-sizing code_cell rendered{{ celltags(cell) }}">
+<div class="cell border-box-sizing code_cell rendered{{ celltags(cell) }}" markdown="1">
 {{ super() }}
 </div>
 {%- endblock codecell %}
@@ -103,7 +103,7 @@ unknown type  {{ cell.type }}
 {%- endblock data_html %}
 
 {% block data_markdown scoped -%}
-{{ output.data['text/markdown'] }}
+{{ output.data['text/markdown'] | markdown2html }}
 {%- endblock data_markdown %}
 
 {% block data_png scoped %}

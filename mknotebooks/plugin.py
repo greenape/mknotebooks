@@ -62,11 +62,14 @@ class Plugin(mkdocs.plugins.BasePlugin):
             default_preprocessors = MarkdownExporter.default_preprocessors.default_args[
                 0
             ]
-            default_preprocessors[
-                default_preprocessors.index(
-                    "nbconvert.preprocessors.ExecutePreprocessor"
-                )
-            ] = ExtraArgsExecutePreprocessor
+            try:
+                default_preprocessors[
+                    default_preprocessors.index(
+                        "nbconvert.preprocessors.ExecutePreprocessor"
+                    )
+                ] = ExtraArgsExecutePreprocessor
+            except ValueError:
+                pass
             exporter_config.default_preprocessors = default_preprocessors
             exporter_config.ExecutePreprocessor.timeout = self.config["timeout"]
             exporter_config.ExecutePreprocessor.allow_errors = self.config[

@@ -11,6 +11,7 @@ pandas = "*"
 matplotlib = "*"
 ipykernel = "*"
 tabulate = "*"
+mkdocs-material = "==4.6.3"
 
 [dev-packages]
 

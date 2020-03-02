@@ -5,5 +5,7 @@ edit_uri: edit/master/examples/execute_with_preamble/docs/
 plugins:
   - mknotebooks:
       execute: true
-      preamble: "pandas_to_markdown.py"
+      preamble: "preamble_demo.py"
       write_markdown: true
+theme:
+  name: "material"
