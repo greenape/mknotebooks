@@ -14,6 +14,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
+## [0.3.3]
+### Fixed
+- Images in markdown cells are now extract as well
+- Re-refixed pandas tables (hopefully)
+
 ## [0.3.2]
 ### Fixed
 - Fixed pandas tables not being parsed
@@ -35,7 +40,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Compatibility with mkdocs 1.1. [#14](https://github.com/greenape/mknotebooks/pull/14) (thanks to [@lgeiger](https://github.com/lgeiger))
 - Set the correct class on headerlink. [#16](https://github.com/greenape/mknotebooks/pull/16) (thanks to [@lgeiger](https://github.com/lgeiger))
 
-[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.3.2...master
+[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.3.3...master
+[0.3.3]: https://github.com/greenape/mktheapidocs/compare/0.3.2...0.3.3
 [0.3.2]: https://github.com/greenape/mktheapidocs/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/greenape/mktheapidocs/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/greenape/mktheapidocs/compare/0.2.0...0.3.0
