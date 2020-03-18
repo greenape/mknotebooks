@@ -5,13 +5,15 @@ name = "pypi"
 
 [packages]
 mkdocs = "*"
-"mknotebooks" = {editable = true, path = "./../.."}
+mknotebooks = {editable = true,path = "./../.."}
 numpy = "*"
 pandas = "*"
 matplotlib = "*"
 ipykernel = "*"
 tabulate = "*"
 mkdocs-material = "==4.6.3"
+ipywidgets = "*"
+tqdm = "*"
 
 [dev-packages]
 
