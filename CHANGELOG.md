@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
+## [0.3.6]
+### Fixed
+- Fixed errors when running with older nbconvert releases by requiring >=  5.6.1 (thanks to [@theolvs](https://github.com/theolvs))
+
 ## [0.3.5]
 ### Fixed
 - Fixed duped display of widgets when there's more than one
@@ -48,7 +52,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Compatibility with mkdocs 1.1. [#14](https://github.com/greenape/mknotebooks/pull/14) (thanks to [@lgeiger](https://github.com/lgeiger))
 - Set the correct class on headerlink. [#16](https://github.com/greenape/mknotebooks/pull/16) (thanks to [@lgeiger](https://github.com/lgeiger))
 
-[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.3.5...master
+[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.3.6...master
+[0.3.6]: https://github.com/greenape/mktheapidocs/compare/0.3.5...0.3.6
 [0.3.5]: https://github.com/greenape/mktheapidocs/compare/0.3.4...0.3.5
 [0.3.4]: https://github.com/greenape/mktheapidocs/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/greenape/mktheapidocs/compare/0.3.2...0.3.3
