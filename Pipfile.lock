@@ -219,10 +219,10 @@
                 "languages"
             ],
             "hashes": [
-                "sha256:1208622930c915a07e6f8e8640474357826bad48534c0f57969b6fca9bffc88e",
-                "sha256:7be69d7186f65784a4f2adf81e5c58efd6a9921aa95966babcb1f2f2ada75c20"
+                "sha256:aab3f489c4d4fab4c1294a257a30fec397db56f0a50273218ccc3efdbf01d6ca",
+                "sha256:c4fb063b98eff775dd638b3df380008ae85e6cb1d1a24d1cd81a10ef6391c26e"
             ],
-            "version": "==0.5.6"
+            "version": "==0.5.8"
         },
         "markdown": {
             "hashes": [
@@ -278,11 +278,11 @@
         },
         "mkdocs": {
             "hashes": [
-                "sha256:1e385a70aea8a9dedb731aea4fd5f3704b2074801c4f96f06b2920999babda8a",
-                "sha256:9243291392f59e20b655e4e46210233453faf97787c2cf72176510e868143174"
+                "sha256:33d5843e17ce7f21c40a31e04550eac2826697d8417c5a3f3dd50b9c3953cd04",
+                "sha256:9fe57f2631ea39ebb50571af9998004a90f010cbc9cb9f24c4237ecad7211a96"
             ],
             "index": "pypi",
-            "version": "==1.1"
+            "version": "==1.1.1"
         },
         "nbconvert": {
             "hashes": [
