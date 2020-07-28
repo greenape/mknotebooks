@@ -1,22 +1,22 @@
 /* Pretty Pandas Dataframes */
+/* Supports mkdocs-material color variables */
 .dataframe {
     border: 0;
     font-size: smaller;
 }
-
 .dataframe tr {
     border: none;
-    background: #ffffff;
+    background: var(--md-code-bg-color, #ffffff);
 }
 .dataframe tr:nth-child(even) {
-    background: #f5f5f5;
+    background: var(--md-default-bg-color, #f5f5f5);
 }
 .dataframe tr:hover {
-    background-color: #e1f5fe;
+    background-color: var(--md-footer-bg-color--dark, #e1f5fe);
 }
 
 .dataframe thead th {
-    background: #fff;
+    background: var(--md-default-bg-color, #ffffff);
     border-bottom: 1px solid #aaa;
     font-weight: bold;
 }
@@ -33,25 +33,4 @@
     min-width:5em;
     padding-left: 10px;
     padding-right: 10px;
-}
-
-
-@media (prefers-color-scheme: dark) {
-
-    .dataframe tr {
-        border: none;
-        background: #2f313e;
-    }
-    .dataframe tr:nth-child(even) {
-        background: #272935;
-    }
-    .dataframe tr:hover {
-        background-color: #2E324C;
-    }
-    .dataframe thead th {
-        background: #272935;
-        border-bottom: 1px solid #aaa;
-        font-weight: bold;
-    }
-
 }
