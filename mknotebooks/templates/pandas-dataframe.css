@@ -34,3 +34,24 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+
+@media (prefers-color-scheme: dark) {
+
+    .dataframe tr {
+        border: none;
+        background: #2f313e;
+    }
+    .dataframe tr:nth-child(even) {
+        background: #272935;
+    }
+    .dataframe tr:hover {
+        background-color: #2E324C;
+    }
+    .dataframe thead th {
+        background: #272935;
+        border-bottom: 1px solid #aaa;
+        font-weight: bold;
+    }
+
+}
