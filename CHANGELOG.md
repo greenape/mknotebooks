@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
+## [0.4.0]
+## Changed
+- stdout, stderr and text/plain outputs are now wrapped in a `<code></code>` (thanks to [@lgeiger](https://github.com/lgeiger))
+
 ## [0.3.6]
 ### Fixed
 - Fixed errors when running with older nbconvert releases by requiring >=  5.6.1 (thanks to [@theolvs](https://github.com/theolvs))
