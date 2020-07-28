@@ -103,7 +103,9 @@ unknown type  {{ cell.type }}
 {% block stream_stdout -%}
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
+<code>
 {{- output.text | ansi2html -}}
+</code>
 </pre>
 </div>
 {%- endblock stream_stdout %}
@@ -111,7 +113,9 @@ unknown type  {{ cell.type }}
 {% block stream_stderr -%}
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
+<code>
 {{- output.text | ansi2html -}}
+</code>
 </pre>
 </div>
 {%- endblock stream_stderr %}
@@ -209,7 +213,9 @@ alt="{{ alttext }}"
 {%- block data_text scoped %}
 <div class="output_text output_subarea {{ extra_class }}">
 <pre>
+<code>
 {{- output.data['text/plain'] | ansi2html -}}
+</code>
 </pre>
 </div>
 {%- endblock -%}
