@@ -14,8 +14,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
+## [0.4.1]
+### Fixed
+- When using `enable_default_pandas_dataframe_styling: true` with mkdocs-material dark mode now renders correctly [#35](https://github.com/greenape/mknotebooks/issues/35) (thanks to [@timvink](https://github.com/timvink))
+
 ## [0.4.0]
-## Changed
+### Changed
 - stdout, stderr and text/plain outputs are now wrapped in a `<code></code>` (thanks to [@lgeiger](https://github.com/lgeiger))
 
 ## [0.3.6]
@@ -56,7 +60,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Compatibility with mkdocs 1.1. [#14](https://github.com/greenape/mknotebooks/pull/14) (thanks to [@lgeiger](https://github.com/lgeiger))
 - Set the correct class on headerlink. [#16](https://github.com/greenape/mknotebooks/pull/16) (thanks to [@lgeiger](https://github.com/lgeiger))
 
-[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.4.0...master
+[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.4.1...master
+[0.4.1]: https://github.com/greenape/mktheapidocs/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/greenape/mktheapidocs/compare/0.3.6...0.4.0
 [0.3.6]: https://github.com/greenape/mktheapidocs/compare/0.3.5...0.3.6
 [0.3.5]: https://github.com/greenape/mktheapidocs/compare/0.3.4...0.3.5
