@@ -4,9 +4,6 @@ repo_url: https://github.com/greenape/mknotebooks
 edit_uri: edit/master/examples/execute_with_preamble/docs/
 plugins:
   - mknotebooks:
-      execute: true
-      preamble: "preamble_demo.py"
-      write_markdown: true
       binder: true
       binder_service_name: "gh"
       binder_branch: "master"
