@@ -170,9 +170,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 attachments = cell.get("attachments", {})
                 for attachment_name, attachment in attachments.items():
                     dest_path = pathlib.Path(page.file.abs_dest_path)
-                    dest_path.parent.mkdir(
-                        parents=True, exist_ok=True
-                    )
+                    dest_path.parent.mkdir(parents=True, exist_ok=True)
                     with open(
                         dest_path.parent / attachment_name,
                         "wb",
@@ -184,7 +182,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
             if self.config["binder"]:
                 badge_url = binder_badge(
                     service_name=self.config["binder_service_name"],
-                    repo_name = config["repo_name"],
+                    repo_name=config["repo_name"],
                     branch=self.config["binder_branch"],
                     file_path=page.file.src_path,
                 )
@@ -256,7 +254,7 @@ def binder_badge(service_name: str, repo_name: str, branch: str, file_path: str)
     if service_name in ["gl", "gh", "gist"]:
         file_path = sanitize_slashes(file_path)
 
-    binder_url =  (
+    binder_url = (
         BINDER_BASE_URL
         + f"{service_name}/"
         + f"{repo_name}/"
