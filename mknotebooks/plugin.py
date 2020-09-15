@@ -56,6 +56,9 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "enable_default_pandas_dataframe_styling",
             mkdocs.config.config_options.Type(bool, default=True),
         ),
+        ("binder", mkdocs.config.config_options.Type(bool, default=False)),
+        ("binder_service_name", mkdocs.config.config_options.Type(str, default="gh")),
+        ("binder_branch", mkdocs.config.config_options.Type(str, default="master")),
     )
 
     def on_config(self, config: MkDocsConfig):
@@ -156,8 +159,9 @@ class Plugin(mkdocs.plugins.BasePlugin):
         return files
 
     def on_page_read_source(self, page, config):
-        if str(page.file.abs_src_path).endswith("ipynb"):
-            with open(page.file.abs_src_path) as nbin:
+        src_path = pathlib.Path(page.file.abs_src_path)
+        if str(src_path).endswith("ipynb"):
+            with open(src_path) as nbin:
                 nb = nbformat.read(nbin, 4)
 
             exporter = config["notebook_exporter"]
@@ -165,15 +169,25 @@ class Plugin(mkdocs.plugins.BasePlugin):
             for cell in nb["cells"]:
                 attachments = cell.get("attachments", {})
                 for attachment_name, attachment in attachments.items():
-                    pathlib.Path(page.file.abs_dest_path).parent.mkdir(
-                        parents=True, exist_ok=True
-                    )
+                    dest_path = pathlib.Path(page.file.abs_dest_path)
+                    dest_path.parent.mkdir(parents=True, exist_ok=True)
                     with open(
-                        pathlib.Path(page.file.abs_dest_path).parent / attachment_name,
+                        dest_path.parent / attachment_name,
                         "wb",
                     ) as fout:
                         for mimetype, data in attachment.items():
                             fout.write(a2b_base64(data))
+
+            # Add binder link if it is requested.
+            if self.config["binder"]:
+                badge_url = binder_badge(
+                    service_name=self.config["binder_service_name"],
+                    repo_name=config["repo_name"],
+                    branch=self.config["binder_branch"],
+                    file_path=page.file.src_path,
+                )
+                binder_cell = nbformat.v4.new_markdown_cell(source=badge_url)
+                nb["cells"].insert(0, binder_cell)
             body, resources = exporter.from_notebook_node(nb)
 
             # nbconvert uses the anchor-link class, convert it to the mkdocs convention
@@ -221,3 +235,34 @@ class Plugin(mkdocs.plugins.BasePlugin):
             page.toc = get_toc(getattr(md, "toc_tokens", []))
 
         return html
+
+
+BINDER_BASE_URL = "https://mybinder.org/v2/"
+BINDER_LOGO = "[![Binder](https://mybinder.org/badge_logo.svg)]"
+
+
+def binder_badge(service_name: str, repo_name: str, branch: str, file_path: str) -> str:
+    """
+    `service_name` should be one of the following:
+
+    - "gh" (GitHub)
+    - "gl" (GitLab)
+    """
+    if service_name == "gl":
+        repo_name = sanitize_slashes(repo_name)
+
+    if service_name in ["gl", "gh", "gist"]:
+        file_path = sanitize_slashes(file_path)
+
+    binder_url = (
+        BINDER_BASE_URL
+        + f"{service_name}/"
+        + f"{repo_name}/"
+        + f"{branch}/"
+        + f"{file_path}"
+    )
+    return f"{BINDER_LOGO}({binder_url})"
+
+
+def sanitize_slashes(s: str) -> str:
+    return s.replace("/", "%2F")
