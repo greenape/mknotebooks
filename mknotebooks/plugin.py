@@ -8,6 +8,7 @@ import markdown
 import mkdocs
 import nbconvert
 import nbformat
+import git
 from mkdocs.config.base import Config as MkDocsConfig
 from mkdocs.structure.files import File, Files
 from mkdocs.structure.pages import Page, _RelativePathExtension
@@ -20,6 +21,13 @@ from mknotebooks.extra_args_execute_preprocessor import ExtraArgsExecutePreproce
 log = logging.getLogger(__name__)
 
 here = os.path.dirname(os.path.abspath(__file__))
+
+
+def get_git_root(path):
+
+    git_repo = git.Repo(path, search_parent_directories=True)
+    git_root = git_repo.git.rev_parse("--show-toplevel")
+    return git_root
 
 
 class NotebookFile(mkdocs.structure.files.File):
@@ -171,20 +179,20 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 for attachment_name, attachment in attachments.items():
                     dest_path = pathlib.Path(page.file.abs_dest_path)
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(
-                        dest_path.parent / attachment_name,
-                        "wb",
-                    ) as fout:
+                    with open(dest_path.parent / attachment_name, "wb",) as fout:
                         for mimetype, data in attachment.items():
                             fout.write(a2b_base64(data))
 
             # Add binder link if it is requested.
             if self.config["binder"]:
+                binder_path = (
+                    pathlib.Path() / config["docs_dir"] / page.file.src_path
+                ).relative_to(get_git_root(pathlib.Path()))
                 badge_url = binder_badge(
                     service_name=self.config["binder_service_name"],
                     repo_name=config["repo_name"],
                     branch=self.config["binder_branch"],
-                    file_path=page.file.src_path,
+                    file_path=binder_path,
                 )
                 binder_cell = nbformat.v4.new_markdown_cell(source=badge_url)
                 nb["cells"].insert(0, binder_cell)
@@ -252,14 +260,10 @@ def binder_badge(service_name: str, repo_name: str, branch: str, file_path: str)
         repo_name = sanitize_slashes(repo_name)
 
     if service_name in ["gl", "gh", "gist"]:
-        file_path = sanitize_slashes(file_path)
+        file_path = sanitize_slashes(f"{file_path}")
 
     binder_url = (
-        BINDER_BASE_URL
-        + f"{service_name}/"
-        + f"{repo_name}/"
-        + f"{branch}/"
-        + f"{file_path}"
+        f"{BINDER_BASE_URL}{service_name}/{repo_name}/{branch}?filepath={file_path}"
     )
     return f"{BINDER_LOGO}({binder_url})"
 
