@@ -1,5 +1,5 @@
-{%- extends 'display_priority.tpl' -%}
-{% from 'celltags.tpl' import celltags %}
+{%- extends 'base/display_priority.j2' -%}
+{% from 'base/celltags.j2' import celltags %}
 
 {% block header %}
 {{ super() }}

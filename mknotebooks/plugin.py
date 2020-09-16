@@ -15,6 +15,7 @@ from mkdocs.structure.pages import Page, _RelativePathExtension
 from mkdocs.structure.toc import get_toc
 from nbconvert import HTMLExporter, MarkdownExporter
 from traitlets.config import Config
+from jupyter_core.paths import jupyter_path
 
 from mknotebooks.extra_args_execute_preprocessor import ExtraArgsExecutePreprocessor
 
@@ -96,13 +97,12 @@ class Plugin(mkdocs.plugins.BasePlugin):
             if self.config["preamble"]:
                 preamble.append(self.config["preamble"])
             exporter_config.ExtraArgsExecutePreprocessor.extra_arguments = [
-                f"--InteractiveShellApp.exec_files={preamble}",
+                f"--InteractiveShellApp.exec_files={preamble_entry}"
+                for preamble_entry in preamble
             ]
 
         template_file = os.path.join(here, "templates", "custom_markdown.tpl")
-        built_in_templates = os.path.join(
-            os.path.dirname(nbconvert.__file__), "templates"
-        )
+        built_in_templates = jupyter_path("nbconvert", "templates")
         exporter_config.NbConvertBase.display_data_priority = [
             "application/vnd.jupyter.widget-state+json",
             "application/vnd.jupyter.widget-view+json",
@@ -120,10 +120,12 @@ class Plugin(mkdocs.plugins.BasePlugin):
             template_file=template_file,
             template_path=[
                 os.path.join(here, "templates"),
-                built_in_templates,
-                os.path.join(built_in_templates, "html"),
-                os.path.join(built_in_templates, "skeleton"),
+                *[
+                    os.path.join(built_in_template, "base")
+                    for built_in_template in built_in_templates
+                ],
             ],
+            **self.config.get("exporter_kwargs", {}),
         )
 
         config["notebook_exporter"] = exporter
@@ -179,10 +181,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 for attachment_name, attachment in attachments.items():
                     dest_path = pathlib.Path(page.file.abs_dest_path)
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(
-                        dest_path.parent / attachment_name,
-                        "wb",
-                    ) as fout:
+                    with open(dest_path.parent / attachment_name, "wb",) as fout:
                         for mimetype, data in attachment.items():
                             fout.write(a2b_base64(data))
 

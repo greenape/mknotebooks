@@ -41,7 +41,7 @@ setup(
     packages=["mknotebooks"],
     include_package_data=True,
     install_requires=[
-        "nbconvert>=5.6.1,<6.0.0",
+        "nbconvert>=6.0.0",
         "mkdocs>=1.1",
         "jupyter_client",
         "gitpython",
