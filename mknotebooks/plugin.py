@@ -89,7 +89,13 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "tag_remove_configs",
             mkdocs.config.config_options.SubConfig(
                 *(
-                    (conf, mkdocs.config.config_options.Type(list, default=set(),),)
+                    (
+                        conf,
+                        mkdocs.config.config_options.Type(
+                            list,
+                            default=list(),
+                        ),
+                    )
                     for conf in [
                         "remove_cell_tags",
                         "remove_all_outputs_tags",
@@ -101,7 +107,10 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ),
         (
             "regex_remove_patterns",
-            mkdocs.config.config_options.Type(list, default=set(),),
+            mkdocs.config.config_options.Type(
+                list,
+                default=list(),
+            ),
         ),
     )
 
@@ -223,7 +232,10 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 for attachment_name, attachment in attachments.items():
                     dest_path = pathlib.Path(page.file.abs_dest_path)
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(dest_path.parent / attachment_name, "wb",) as fout:
+                    with open(
+                        dest_path.parent / attachment_name,
+                        "wb",
+                    ) as fout:
                         for mimetype, data in attachment.items():
                             fout.write(a2b_base64(data))
 
