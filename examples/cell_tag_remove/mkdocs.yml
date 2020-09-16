@@ -1,0 +1,24 @@
+site_name: mknotebooks
+repo_name: 'greenape/mknotebooks'
+repo_url: https://github.com/greenape/mknotebooks
+edit_uri: edit/master/examples/cell_tag_remove/docs/
+plugins:
+  - mknotebooks:
+      execute: true
+      preamble: "preamble_demo.py"
+      write_markdown: true
+      binder: true
+      binder_service_name: "gh"
+      binder_branch: "master"
+      tag_remove_configs:
+        remove_cell_tags:
+          - Remove_cell
+        remove_all_outputs_tags:
+          - Remove_all_output
+        remove_single_output_tags:
+          - Remove_single_output
+        remove_input_tags:
+          - Remove_input
+
+theme:
+  name: "material"

@@ -14,6 +14,7 @@ from mkdocs.structure.files import File, Files
 from mkdocs.structure.pages import Page, _RelativePathExtension
 from mkdocs.structure.toc import get_toc
 from nbconvert import HTMLExporter, MarkdownExporter
+from nbconvert.preprocessors.tagremove import TagRemovePreprocessor
 from traitlets.config import Config
 from jupyter_core.paths import jupyter_path
 
@@ -84,6 +85,20 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 )
             ),
         ),
+        (
+            "tag_remove_configs",
+            mkdocs.config.config_options.SubConfig(
+                *(
+                    (conf, mkdocs.config.config_options.Type(list, default=set(),),)
+                    for conf in [
+                        "remove_cell_tags",
+                        "remove_all_outputs_tags",
+                        "remove_single_output_tags",
+                        "remove_input_tags",
+                    ]
+                )
+            ),
+        ),
     )
 
     def on_config(self, config: MkDocsConfig):
@@ -131,6 +146,10 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "image/jpeg",
             "text/plain",
         ]
+        for option, setting in self.config.get("tag_remove_configs", {}).items():
+            print(option, setting)
+            setattr(exporter_config.TagRemovePreprocessor, option, set(setting))
+        exporter_config.TagRemovePreprocessor.enabled = True
         exporter = HTMLExporter(
             config=exporter_config,
             template_file=template_file,

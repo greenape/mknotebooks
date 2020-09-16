@@ -33,8 +33,7 @@
 
 
 {% block codecell %}
-<div class="cell border-box-sizing code_cell rendered{{ celltags(cell) }}" markdown="1">
-{{ super() }}
+<div class="cell border-box-sizing code_cell rendered{{ celltags(cell) }}" markdown="1">{{ super() }}
 </div>
 {%- endblock codecell %}
 
