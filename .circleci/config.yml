@@ -81,10 +81,17 @@ jobs:
     steps:
       - checkout:
           path: /home/circleci/project/
+      - restore_cache:
+          keys:
+            - <<parameters.example>>-deps-1-{{ checksum "Pipfile.lock" }}
       - run:
           name: Install deps
           command: |
             pipenv install
+      - save_cache:
+          key: <<parameters.example>>-deps-1-{{ checksum "Pipfile.lock" }}
+          paths:
+            - /home/circleci/.local/share/virtualenvs/
       - run:
           name: Build example
           command: pipenv run mkdocs build
