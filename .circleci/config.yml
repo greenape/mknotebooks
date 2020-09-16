@@ -70,6 +70,25 @@ jobs:
             pip install twine
             twine upload /home/circleci/dist/*
 
+  build_examples:
+    docker: *base_docker
+    parameters:
+      example:
+        type: enum
+        enum: ["binder_logo", "execute_with_preamble"]
+        default: "binder_logo"
+    working_directory: /home/circleci/project/examples/<<parameters.example>>
+    steps:
+      - checkout:
+          path: /home/circleci/project/
+      - run:
+          name: Install deps
+          command: |
+            pipenv install
+      - run:
+          name: Build example
+          command: pipenv run mkdocs build
+
 workflows:
   run_build_pipeline:
     jobs:
@@ -77,8 +96,13 @@ workflows:
           <<: *run_always_org_context
       - build_python_wheel:
           <<: *run_always_org_context
+      - build_examples:
+          matrix:
+            parameters:
+              example: ["binder_logo", "execute_with_preamble"]
       - push_wheel:
           requires:
             - lint_python
             - build_python_wheel
+            - build_examples
           <<: *tag_and_master_only_org_context
