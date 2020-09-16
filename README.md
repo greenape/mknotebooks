@@ -55,9 +55,23 @@ markdown_extensions:
     - codehilite
 ```
 
-## Example
+### Binder
 
-An [example docs project](examples/execute_with_preamble) demonstrating the above is included. Try it out by running `pipenv install && pipenv run mkdocs serve`.
+You can also choose to have mknotebooks insert a [Binder](https://mybinder.org) link into each notebook.
+
+``` mkdocs.yml
+- mknotebooks:
+      binder: true
+      binder_service_name: "gh"
+      binder_branch: "master"
+```
+
+If you are using GitLab, you will need to set `binder_service_name` to `"gl"`.
+
+## Examples
+
+Example docs projects demonstrating the [use of a preamble](examples/execute_with_preamble) and [Binder](examples/binder_logo) are. Try them out by running `pipenv install && pipenv run mkdocs serve`.
+
 
 ## Inspecting generated markdown
 
