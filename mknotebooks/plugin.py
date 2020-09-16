@@ -289,6 +289,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         output = re.compile("attachment:([a-z_\-A-Z0-9]+\.(png|jpg|svg))").sub(
             r"\1", output
         )
+        output = re.compile("<p>hzzhzkh:[0-9]+</p>").sub("", output)
         return output
 
 
