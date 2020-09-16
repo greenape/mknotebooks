@@ -1,12 +1,17 @@
 site_name: mknotebooks
 repo_name: 'greenape/mknotebooks'
 repo_url: https://github.com/greenape/mknotebooks
-edit_uri: edit/master/examples/binder_logo/docs/
+edit_uri: edit/master/examples/no_code/docs/
 plugins:
   - mknotebooks:
+      execute: true
+      preamble: "preamble_demo.py"
+      write_markdown: false
       binder: true
       binder_service_name: "gh"
       binder_branch: "master"
+      exporter_kwargs:
+        exclude_input: true
 
 theme:
   name: "material"

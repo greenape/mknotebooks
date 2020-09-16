@@ -75,7 +75,7 @@ jobs:
     parameters:
       example:
         type: enum
-        enum: ["binder_logo", "execute_with_preamble"]
+        enum: ["binder_logo", "execute_with_preamble", "no_code"]
         default: "binder_logo"
     working_directory: /home/circleci/project/examples/<<parameters.example>>
     steps:
@@ -109,7 +109,7 @@ workflows:
       - build_examples:
           matrix:
             parameters:
-              example: ["binder_logo", "execute_with_preamble"]
+              example: ["binder_logo", "execute_with_preamble", "no_code"]
       - push_wheel:
           requires:
             - lint_python
