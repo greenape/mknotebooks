@@ -99,6 +99,10 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 )
             ),
         ),
+        (
+            "regex_remove_patterns",
+            mkdocs.config.config_options.Type(list, default=set(),),
+        ),
     )
 
     def on_config(self, config: MkDocsConfig):
@@ -149,6 +153,9 @@ class Plugin(mkdocs.plugins.BasePlugin):
         for option, setting in self.config.get("tag_remove_configs", {}).items():
             print(option, setting)
             setattr(exporter_config.TagRemovePreprocessor, option, set(setting))
+        exporter_config.RegexRemovePreprocessor.patterns = self.config.get(
+            "regex_remove_patterns", set()
+        )
         exporter_config.TagRemovePreprocessor.enabled = True
         exporter = HTMLExporter(
             config=exporter_config,

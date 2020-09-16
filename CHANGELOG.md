@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Added
+- You can now remove cells using both nbconvert's built in options, but also the [cell tag and regex remove preprocessors](https://nbconvert.readthedocs.io/en/latest/removing_cells.html). [#36](https://github.com/greenape/mknotebooks/issues/36)
+- Now works with nbconvert 6.x [#46](https://github.com/greenape/mknotebooks/issues/46)
 
 ### Changed
 
@@ -13,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ### Removed
+- No longer supports nbconvert < 6.x [#46](https://github.com/greenape/mknotebooks/issues/46)
 
 ## [0.5.0]
 ### Added
