@@ -11,7 +11,7 @@ pandas = "*"
 matplotlib = "*"
 ipykernel = "*"
 tabulate = "*"
-mkdocs-material = "==4.6.3"
+mkdocs-material = "*"
 ipywidgets = "*"
 tqdm = "*"
 

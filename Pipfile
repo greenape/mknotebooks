@@ -9,7 +9,7 @@ pytest = "*"
 [packages]
 twine = "*"
 mkdocs = "*"
-nbconvert = "*"
+nbconvert = "==5.6.1"
 
 
 
