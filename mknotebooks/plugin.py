@@ -51,6 +51,7 @@ class NotebookFile(mkdocs.structure.files.File):
 
 
 class Plugin(mkdocs.plugins.BasePlugin):
+    exporter_options = HTMLExporter.class_traits()
     config_scheme = (
         ("execute", mkdocs.config.config_options.Type(bool, default=False)),
         ("allow_errors", mkdocs.config.config_options.Type(bool, default=False)),
@@ -68,6 +69,21 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ("binder", mkdocs.config.config_options.Type(bool, default=False)),
         ("binder_service_name", mkdocs.config.config_options.Type(str, default="gh")),
         ("binder_branch", mkdocs.config.config_options.Type(str, default="master")),
+        (
+            "exporter_kwargs",
+            mkdocs.config.config_options.SubConfig(
+                *(
+                    (
+                        kwarg,
+                        mkdocs.config.config_options.Type(
+                            type(traitlet.default_value), default=traitlet.default_value
+                        ),
+                    )
+                    for kwarg, traitlet in exporter_options.items()
+                    if kwarg.startswith("exclude") or kwarg in ("anchor_link_text")
+                )
+            ),
+        ),
     )
 
     def on_config(self, config: MkDocsConfig):
