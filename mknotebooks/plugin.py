@@ -89,13 +89,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "tag_remove_configs",
             mkdocs.config.config_options.SubConfig(
                 *(
-                    (
-                        conf,
-                        mkdocs.config.config_options.Type(
-                            list,
-                            default=list(),
-                        ),
-                    )
+                    (conf, mkdocs.config.config_options.Type(list, default=list(),),)
                     for conf in [
                         "remove_cell_tags",
                         "remove_all_outputs_tags",
@@ -107,10 +101,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ),
         (
             "regex_remove_patterns",
-            mkdocs.config.config_options.Type(
-                list,
-                default=list(),
-            ),
+            mkdocs.config.config_options.Type(list, default=list(),),
         ),
     )
 
@@ -232,10 +223,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 for attachment_name, attachment in attachments.items():
                     dest_path = pathlib.Path(page.file.abs_dest_path)
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(
-                        dest_path.parent / attachment_name,
-                        "wb",
-                    ) as fout:
+                    with open(dest_path.parent / attachment_name, "wb",) as fout:
                         for mimetype, data in attachment.items():
                             fout.write(a2b_base64(data))
 
@@ -256,9 +244,6 @@ class Plugin(mkdocs.plugins.BasePlugin):
 
             # nbconvert uses the anchor-link class, convert it to the mkdocs convention
             body = body.replace('class="anchor-link"', 'class="headerlink"')
-            body = re.compile("\(attachment:([a-z_\-A-Z0-9]+\.(png|jpg|svg))\)").sub(
-                r"(\1)", body
-            )
 
             if self.config["write_markdown"]:
                 pathlib.Path(page.file.abs_dest_path).parent.mkdir(
@@ -299,6 +284,12 @@ class Plugin(mkdocs.plugins.BasePlugin):
             page.toc = get_toc(getattr(md, "toc_tokens", []))
 
         return html
+
+    def on_post_page(self, output: str, page: Page, config: MkDocsConfig) -> str:
+        output = re.compile("attachment:([a-z_\-A-Z0-9]+\.(png|jpg|svg))").sub(
+            r"\1", output
+        )
+        return output
 
 
 BINDER_BASE_URL = "https://mybinder.org/v2/"
