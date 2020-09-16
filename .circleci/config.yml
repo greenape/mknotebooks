@@ -95,7 +95,7 @@ jobs:
       - run:
           name: Build example
           command: pipenv run mkdocs build
-       - store_artifacts:
+      - store_artifacts:
           path: /home/circleci/project/examples/<<parameters.example>>/site
           destination: <<parameters.example>>
 
