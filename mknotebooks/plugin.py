@@ -179,7 +179,10 @@ class Plugin(mkdocs.plugins.BasePlugin):
                 for attachment_name, attachment in attachments.items():
                     dest_path = pathlib.Path(page.file.abs_dest_path)
                     dest_path.parent.mkdir(parents=True, exist_ok=True)
-                    with open(dest_path.parent / attachment_name, "wb",) as fout:
+                    with open(
+                        dest_path.parent / attachment_name,
+                        "wb",
+                    ) as fout:
                         for mimetype, data in attachment.items():
                             fout.write(a2b_base64(data))
 
