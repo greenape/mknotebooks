@@ -5,14 +5,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 ### Added
-- You can now remove cells using both nbconvert's built in options, but also the [cell tag and regex remove preprocessors](https://nbconvert.readthedocs.io/en/latest/removing_cells.html). [#36](https://github.com/greenape/mknotebooks/issues/36)
-- Now works with nbconvert 6.x [#46](https://github.com/greenape/mknotebooks/issues/46)
 
 ### Changed
 
 
 ### Fixed
 
+
+### Removed
+
+## [0.6.0]
+### Added
+- You can now remove cells using both nbconvert's built in options, but also the [cell tag and regex remove preprocessors](https://nbconvert.readthedocs.io/en/latest/removing_cells.html). [#36](https://github.com/greenape/mknotebooks/issues/36)
+
+### Fixed
+- Now works with nbconvert 6.x [#46](https://github.com/greenape/mknotebooks/issues/46)
 
 ### Removed
 - No longer supports nbconvert < 6.x [#46](https://github.com/greenape/mknotebooks/issues/46)
@@ -70,7 +77,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Compatibility with mkdocs 1.1. [#14](https://github.com/greenape/mknotebooks/pull/14) (thanks to [@lgeiger](https://github.com/lgeiger))
 - Set the correct class on headerlink. [#16](https://github.com/greenape/mknotebooks/pull/16) (thanks to [@lgeiger](https://github.com/lgeiger))
 
-[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.5.0...master
+[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.6.0...master
+[0.6.0]: https://github.com/greenape/mktheapidocs/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/greenape/mktheapidocs/compare/0.4.1...0.5.0
 [0.4.1]: https://github.com/greenape/mktheapidocs/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/greenape/mktheapidocs/compare/0.3.6...0.4.0
