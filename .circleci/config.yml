@@ -95,6 +95,9 @@ jobs:
       - run:
           name: Build example
           command: pipenv run mkdocs build
+       - store_artifacts:
+          path: /home/circleci/project/examples/<<parameters.example>>/docs
+          destination: <<parameters.example>>
 
 workflows:
   run_build_pipeline:
