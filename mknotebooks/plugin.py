@@ -17,6 +17,7 @@ from nbconvert import HTMLExporter, MarkdownExporter
 from nbconvert.preprocessors.tagremove import TagRemovePreprocessor
 from traitlets.config import Config
 from jupyter_core.paths import jupyter_path
+from bs4 import BeautifulSoup as bs
 
 from mknotebooks.extra_args_execute_preprocessor import ExtraArgsExecutePreprocessor
 
@@ -292,7 +293,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
             md = markdown.Markdown(
                 extensions=extensions, extension_configs=config["mdx_configs"] or {}
             )
-            html = md.convert(page.markdown)
+            html = md.convert(bs(page.markdown).prettify())
             page.toc = get_toc(getattr(md, "toc_tokens", []))
 
         return html
