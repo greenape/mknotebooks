@@ -45,7 +45,6 @@ setup(
         "mkdocs>=1.1",
         "jupyter_client",
         "gitpython",
-        "beautifulsoup4",
     ],
     platforms=["MacOS X", "Linux"],
     classifiers=[
