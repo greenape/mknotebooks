@@ -56,8 +56,7 @@
   output_prompt doesn't do anything in HTML,
   because there is a prompt div in each output area (see output block)
 #}
-{% block output_prompt %}
-{% endblock output_prompt %}
+{% block output_prompt %}{% endblock output_prompt %}
 
 {% block input %}
 ```
