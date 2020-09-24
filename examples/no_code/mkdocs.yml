@@ -6,7 +6,7 @@ plugins:
   - mknotebooks:
       execute: true
       preamble: "preamble_demo.py"
-      write_markdown: false
+      write_markdown: true
       binder: true
       binder_service_name: "gh"
       binder_branch: "master"
