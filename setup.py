@@ -43,6 +43,7 @@ setup(
     install_requires=[
         "nbconvert>=6.0.0",
         "mkdocs>=1.1",
+        "markdown>=3.3",
         "jupyter_client",
         "gitpython",
     ],

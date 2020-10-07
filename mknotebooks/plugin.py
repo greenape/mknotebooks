@@ -160,7 +160,6 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "text/plain",
         ]
         for option, setting in self.config.get("tag_remove_configs", {}).items():
-            print(option, setting)
             setattr(exporter_config.TagRemovePreprocessor, option, set(setting))
         exporter_config.RegexRemovePreprocessor.patterns = self.config.get(
             "regex_remove_patterns", set()
