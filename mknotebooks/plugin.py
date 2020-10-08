@@ -4,9 +4,9 @@ import pathlib
 import re
 from binascii import a2b_base64
 
+import nbconvert
 import markdown
 import mkdocs
-import nbconvert
 import nbformat
 import git
 from mkdocs.config.base import Config as MkDocsConfig
