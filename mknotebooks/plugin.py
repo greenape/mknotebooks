@@ -2,9 +2,12 @@ import logging
 import os
 import pathlib
 import re
+import sys
 from binascii import a2b_base64
 
-import nbconvert
+pymod = sys.modules.get(
+    "xml.etree.ElementTree", None
+)  # Working around https://github.com/tiran/defusedxml/pull/53/files
 import markdown
 import mkdocs
 import nbformat
@@ -14,11 +17,16 @@ from mkdocs.structure.files import File, Files
 from mkdocs.structure.pages import Page, _RelativePathExtension
 from mkdocs.structure.toc import get_toc
 from nbconvert import HTMLExporter, MarkdownExporter
-from nbconvert.preprocessors.tagremove import TagRemovePreprocessor
 from traitlets.config import Config
 from jupyter_core.paths import jupyter_path
 
 from mknotebooks.extra_args_execute_preprocessor import ExtraArgsExecutePreprocessor
+
+sys.modules[
+    "xml.etree"
+].ElementTree = (
+    pymod  # Working around https://github.com/tiran/defusedxml/pull/53/files
+)
 
 log = logging.getLogger(__name__)
 
