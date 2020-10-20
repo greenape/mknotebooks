@@ -2,11 +2,14 @@ import logging
 import os
 import pathlib
 import re
+import sys
 from binascii import a2b_base64
 
+pymod = sys.modules.get(
+    "xml.etree.ElementTree", None
+)  # Working around https://github.com/tiran/defusedxml/pull/53/files
 import markdown
 import mkdocs
-import nbconvert
 import nbformat
 import git
 from mkdocs.config.base import Config as MkDocsConfig
@@ -14,11 +17,16 @@ from mkdocs.structure.files import File, Files
 from mkdocs.structure.pages import Page, _RelativePathExtension
 from mkdocs.structure.toc import get_toc
 from nbconvert import HTMLExporter, MarkdownExporter
-from nbconvert.preprocessors.tagremove import TagRemovePreprocessor
 from traitlets.config import Config
 from jupyter_core.paths import jupyter_path
 
 from mknotebooks.extra_args_execute_preprocessor import ExtraArgsExecutePreprocessor
+
+sys.modules[
+    "xml.etree"
+].ElementTree = (
+    pymod  # Working around https://github.com/tiran/defusedxml/pull/53/files
+)
 
 log = logging.getLogger(__name__)
 
@@ -160,7 +168,6 @@ class Plugin(mkdocs.plugins.BasePlugin):
             "text/plain",
         ]
         for option, setting in self.config.get("tag_remove_configs", {}).items():
-            print(option, setting)
             setattr(exporter_config.TagRemovePreprocessor, option, set(setting))
         exporter_config.RegexRemovePreprocessor.patterns = self.config.get(
             "regex_remove_patterns", set()
