@@ -305,9 +305,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
         return html
 
     def on_post_page(self, output: str, page: Page, config: MkDocsConfig) -> str:
-        output = re.compile("attachment:([a-z_\-A-Z0-9]+\.(png|jpg|svg))").sub(
-            r"\1", output
-        )
+        output = re.compile("attachment:(.+\.(png|jpg|svg))").sub(r"\1", output)
         output = re.compile("<p>hzzhzkh:[0-9]+</p>").sub("", output)
         return output
 
