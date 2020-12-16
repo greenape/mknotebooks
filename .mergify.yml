@@ -1,0 +1,17 @@
+pull_request_rules:
+  - name: Automatic merge on approval
+    conditions:
+      - "#approved-reviews-by>=1"
+      - status-success=run_build_pipeline
+      - base=master
+    actions:
+      merge:
+        method: merge
+  - name: automatic merge for Dependabot pull requests on master
+    conditions:
+      - author=dependabot[bot]
+      - status-success=run_build_pipeline
+      - base=master
+    actions:
+      merge:
+        method: merge
