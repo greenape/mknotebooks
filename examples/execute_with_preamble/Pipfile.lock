@@ -845,11 +845,11 @@
         },
         "tqdm": {
             "hashes": [
-                "sha256:18d6a615aedd09ec8456d9524489dab330af4bd5c2a14a76eb3f9a0e14471afe",
-                "sha256:80d9d5165d678dbd027dd102dfb99f71bf05f333b61fb761dbba13b4ab719ead"
+                "sha256:556c55b081bd9aa746d34125d024b73f0e2a0e62d5927ff0e400e20ee0a03b9a",
+                "sha256:b8b46036fd00176d0870307123ef06bb851096964fa7fc578d789f90ce82c3e4"
             ],
             "index": "pypi",
-            "version": "==4.52.0"
+            "version": "==4.55.1"
         },
         "traitlets": {
             "hashes": [
