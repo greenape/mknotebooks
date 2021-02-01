@@ -424,11 +424,11 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:0f00bfcd6eb60f77dee06bfdac5eff5982b99fbc3bce68191cc8f4b2f8f8d60c",
-                "sha256:7effb1aac0505d35b58117a3477083f315f574e4f86f8d6011f6ee7eb9041863"
+                "sha256:11241769c4bb6ca2a8f0bad7f1ea3bcfba021f9bbe59e2456b5465e759c2202a",
+                "sha256:6bef9077527be75a60883c60b07a41e59f33b5400009ea10485337f07b981e24"
             ],
             "index": "pypi",
-            "version": "==6.2.6"
+            "version": "==6.2.7"
         },
         "mkdocs-material-extensions": {
             "hashes": [
