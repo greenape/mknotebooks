@@ -424,11 +424,11 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:0f00bfcd6eb60f77dee06bfdac5eff5982b99fbc3bce68191cc8f4b2f8f8d60c",
-                "sha256:7effb1aac0505d35b58117a3477083f315f574e4f86f8d6011f6ee7eb9041863"
+                "sha256:11241769c4bb6ca2a8f0bad7f1ea3bcfba021f9bbe59e2456b5465e759c2202a",
+                "sha256:6bef9077527be75a60883c60b07a41e59f33b5400009ea10485337f07b981e24"
             ],
             "index": "pypi",
-            "version": "==6.2.6"
+            "version": "==6.2.7"
         },
         "mkdocs-material-extensions": {
             "hashes": [
@@ -672,10 +672,10 @@
         },
         "pytz": {
             "hashes": [
-                "sha256:16962c5fb8db4a8f63a26646d8886e9d769b6c511543557bc84e9569fb9a9cb4",
-                "sha256:180befebb1927b16f6b57101720075a984c019ac16b1b7575673bea42c6c3da5"
+                "sha256:83a4a90894bf38e243cf052c8b58f381bfe9a7a483f6a9cab140bc7f702ac4da",
+                "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"
             ],
-            "version": "==2020.5"
+            "version": "==2021.1"
         },
         "pyyaml": {
             "hashes": [
