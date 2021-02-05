@@ -65,7 +65,6 @@
                 "sha256:6123ddc1052673e52bab52cdc955bcb57a015264a1c57d37bea2f6b817af0125",
                 "sha256:98b3170739e5e83dd9dc19633f074727ad848cbedb6026708c8ac2d3b697a433"
             ],
-            "index": "pypi",
             "version": "==3.3.0"
         },
         "cffi": {
@@ -426,11 +425,11 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:11241769c4bb6ca2a8f0bad7f1ea3bcfba021f9bbe59e2456b5465e759c2202a",
-                "sha256:6bef9077527be75a60883c60b07a41e59f33b5400009ea10485337f07b981e24"
+                "sha256:c9b63d709d29778aa3dafc7178b6a8c655b00937be2594aab016d1423696c792",
+                "sha256:ce2f4a71e5db49540d71fd32f9afba7645765f7eca391e560d1d27f947eb344c"
             ],
             "index": "pypi",
-            "version": "==6.2.7"
+            "version": "==6.2.8"
         },
         "mkdocs-material-extensions": {
             "hashes": [
