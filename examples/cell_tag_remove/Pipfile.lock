@@ -159,10 +159,10 @@
         },
         "gitpython": {
             "hashes": [
-                "sha256:42dbefd8d9e2576c496ed0059f3103dcef7125b9ce16f9d5f9c834aed44a1dac",
-                "sha256:867ec3dfb126aac0f8296b19fb63b8c4a399f32b4b6fafe84c4b10af5fa9f7b5"
+                "sha256:8621a7e777e276a5ec838b59280ba5272dd144a18169c36c903d8b38b99f750a",
+                "sha256:c5347c81d232d9b8e7f47b68a83e5dc92e7952127133c5f2df9133f2c75a1b29"
             ],
-            "version": "==3.1.12"
+            "version": "==3.1.13"
         },
         "importlib-metadata": {
             "hashes": [
@@ -219,10 +219,10 @@
         },
         "joblib": {
             "hashes": [
-                "sha256:75ead23f13484a2a414874779d69ade40d4fa1abe62b222a23cd50d4bc822f6f",
-                "sha256:7ad866067ac1fdec27d51c8678ea760601b70e32ff1881d4dc8e1171f2b64b24"
+                "sha256:9c17567692206d2f3fb9ecf5e991084254fe631665c450b443761c4186a613f7",
+                "sha256:feeb1ec69c4d45129954f1b7034954241eedfd6ba39b5e9e4b6883be3332d5e5"
             ],
-            "version": "==1.0.0"
+            "version": "==1.0.1"
         },
         "jsonschema": {
             "hashes": [
@@ -444,10 +444,10 @@
         },
         "nbclient": {
             "hashes": [
-                "sha256:01e2d726d16eaf2cde6db74a87e2451453547e8832d142f73f72fddcd4fe0250",
-                "sha256:4d6b116187c795c99b9dba13d46e764d596574b14c296d60670c8dfe454db364"
+                "sha256:0ed6e5700ad18818030a3a5f0f201408c5972d8e38793840cd9339488fd9f7c4",
+                "sha256:1e0375490cd33fda6c23e61084476298a87f34d02607a038aa8ecc6e8901615f"
             ],
-            "version": "==0.5.1"
+            "version": "==0.5.2"
         },
         "nbconvert": {
             "hashes": [
@@ -878,11 +878,11 @@
         },
         "tqdm": {
             "hashes": [
-                "sha256:4621f6823bab46a9cc33d48105753ccbea671b68bab2c50a9f0be23d4065cb5a",
-                "sha256:fe3d08dd00a526850568d542ff9de9bbc2a09a791da3c334f3213d8d0bbbca65"
+                "sha256:2874fa525c051177583ec59c0fb4583e91f28ccd3f217ffad2acdb32d2c789ac",
+                "sha256:ab9b659241d82b8b51b2269ee243ec95286046bf06015c4e15a947cc15914211"
             ],
             "index": "pypi",
-            "version": "==4.56.0"
+            "version": "==4.56.1"
         },
         "traitlets": {
             "hashes": [
