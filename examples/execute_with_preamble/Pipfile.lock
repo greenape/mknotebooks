@@ -159,10 +159,10 @@
         },
         "gitpython": {
             "hashes": [
-                "sha256:8621a7e777e276a5ec838b59280ba5272dd144a18169c36c903d8b38b99f750a",
-                "sha256:c5347c81d232d9b8e7f47b68a83e5dc92e7952127133c5f2df9133f2c75a1b29"
+                "sha256:3283ae2fba31c913d857e12e5ba5f9a7772bbc064ae2bb09efafa71b0dd4939b",
+                "sha256:be27633e7509e58391f10207cd32b2a6cf5b908f92d9cd30da2e514e1137af61"
             ],
-            "version": "==3.1.13"
+            "version": "==3.1.14"
         },
         "importlib-metadata": {
             "hashes": [
@@ -182,11 +182,11 @@
         },
         "ipython": {
             "hashes": [
-                "sha256:1918dea4bfdc5d1a830fcfce9a710d1d809cbed123e85eab0539259cb0f56640",
-                "sha256:1923af00820a8cf58e91d56b89efc59780a6e81363b94464a0f17c039dffff9e"
+                "sha256:04323f72d5b85b606330b6d7e2dc8d2683ad46c3905e955aa96ecc7a99388e70",
+                "sha256:34207ffb2f653bced2bc8e3756c1db86e7d93e44ed049daae9814fed66d408ec"
             ],
             "markers": "python_version >= '3.3'",
-            "version": "==7.20.0"
+            "version": "==7.21.0"
         },
         "ipython-genutils": {
             "hashes": [
@@ -425,11 +425,11 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:853b9276a32700fed7fbdf608d6ac39297edcdf8cb683c6337acb412d9c7bb57",
-                "sha256:cb2ba082f91e6ca8517589cddf31f9f9134cd081aa50c7973895734c8d56f13b"
+                "sha256:24db3f45ac8eca7424ecda93e1cb5a16fcd11d76932e65c9db710eb3113592b0",
+                "sha256:36b46aa1e5b47896a5a2cec129467ffcc84cf343f5296b0458a84585900cf03e"
             ],
             "index": "pypi",
-            "version": "==7.0.2"
+            "version": "==7.0.3"
         },
         "mkdocs-material-extensions": {
             "hashes": [
@@ -444,10 +444,10 @@
         },
         "nbclient": {
             "hashes": [
-                "sha256:0ed6e5700ad18818030a3a5f0f201408c5972d8e38793840cd9339488fd9f7c4",
-                "sha256:1e0375490cd33fda6c23e61084476298a87f34d02607a038aa8ecc6e8901615f"
+                "sha256:db17271330c68c8c88d46d72349e24c147bb6f34ec82d8481a8f025c4d26589c",
+                "sha256:e79437364a2376892b3f46bedbf9b444e5396cfb1bc366a472c37b48e9551500"
             ],
-            "version": "==0.5.2"
+            "version": "==0.5.3"
         },
         "nbconvert": {
             "hashes": [
