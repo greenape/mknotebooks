@@ -77,7 +77,8 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ),
         ("binder", mkdocs.config.config_options.Type(bool, default=False)),
         ("binder_service_name", mkdocs.config.config_options.Type(str, default="gh")),
-        ("binder_branch", mkdocs.config.config_options.Type(str, default="master")),
+        ("binder_branch", mkdocs.config.config_options.Type(str, default="HEAD")),
+        ("binder_ui", mkdocs.config.config_options.Type(str, default="")),
         (
             "exporter_kwargs",
             mkdocs.config.config_options.SubConfig(
@@ -255,6 +256,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
                     service_name=self.config["binder_service_name"],
                     repo_name=config["repo_name"],
                     branch=self.config["binder_branch"],
+                    ui=self.config["binder_ui"],
                     file_path=binder_path,
                 )
                 binder_cell = nbformat.v4.new_markdown_cell(source=badge_url)
@@ -314,12 +316,17 @@ BINDER_BASE_URL = "https://mybinder.org/v2/"
 BINDER_LOGO = "[![Binder](https://mybinder.org/badge_logo.svg)]"
 
 
-def binder_badge(service_name: str, repo_name: str, branch: str, file_path: str) -> str:
+def binder_badge(service_name: str, repo_name: str, branch: str, ui: str, file_path: str) -> str:
     """
     `service_name` should be one of the following:
 
     - "gh" (GitHub)
     - "gl" (GitLab)
+
+    `ui` should be one of the following:
+    - "" (empty string for notebook interface, default)
+    - "lab" for lab interface
+    - "nteract" for nteract interface
     """
     if service_name == "gl":
         repo_name = sanitize_slashes(repo_name)
@@ -327,8 +334,10 @@ def binder_badge(service_name: str, repo_name: str, branch: str, file_path: str)
     if service_name in ["gl", "gh", "gist"]:
         file_path = sanitize_slashes(f"{file_path}")
 
+    url_path = f"{ui}%2Ftree%2F{file_path}"
+
     binder_url = (
-        f"{BINDER_BASE_URL}{service_name}/{repo_name}/{branch}?filepath={file_path}"
+        f"{BINDER_BASE_URL}{service_name}/{repo_name}/{branch}?urlpath={url_path}"
     )
     return f"{BINDER_LOGO}({binder_url})"
 
