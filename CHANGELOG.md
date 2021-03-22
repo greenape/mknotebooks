@@ -14,6 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Removed
 
+## [0.7.0]
+### Added
+- You can now specify which binder interface to use for Binder links (notebook, lab, or nteract). (thanks to [@MridulS](https://github.com/MridulS))
+
 ## [0.6.1]
 ### Fixed
 - Fixes markdown failing to parse sometimes. [#52](https://github.com/greenape/mknotebooks/issues/52)
