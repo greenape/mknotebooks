@@ -64,6 +64,7 @@ You can also choose to have mknotebooks insert a [Binder](https://mybinder.org) 
       binder: true
       binder_service_name: "gh"
       binder_branch: "master"
+      binder_ui: "lab"
 ```
 
 If you are using GitLab, you will need to set `binder_service_name` to `"gl"`.
