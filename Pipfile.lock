@@ -297,11 +297,11 @@
         },
         "mkdocs": {
             "hashes": [
-                "sha256:0a194e98f7c8e83b0f538ce3d1f2a903bdc3271e2038d5032f786c7b1ebf43aa",
-                "sha256:26118adefe1d311b306f14bc2fae313cffcddc2f724d498fb40c26473c7f0017"
+                "sha256:11141126e5896dd9d279b3e4814eb488e409a0990fb638856255020406a8e2e7",
+                "sha256:6e0ea175366e3a50d334597b0bc042b8cebd512398cdd3f6f34842d0ef524905"
             ],
             "index": "pypi",
-            "version": "==1.2"
+            "version": "==1.2.1"
         },
         "nbclient": {
             "hashes": [
