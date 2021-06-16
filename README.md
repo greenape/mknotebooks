@@ -6,7 +6,7 @@
 
 # mknotebooks
 
-mknotebooks is a plugin for [MkDocs](https://mkdocs.org), which makes it more convenient to include [Jupyter](https://jupyter.org) notebooks in your project documentation.
+mknotebooks is a plugin for [MkDocs](https://mkdocs.org) enabling you to include [Jupyter](https://jupyter.org) notebooks directly in your project documentation.
 
 ## Install
 
@@ -14,18 +14,40 @@ mknotebooks is a plugin for [MkDocs](https://mkdocs.org), which makes it more co
 
 ## Usage
 
-Simply include any notebooks you want to use in the docs source directory, and add `mknotebooks` to the plugin section of your `mkdocs.yml` as follows:
+- Add `mknotebooks` to the plugin section of your `mkdocs.yml`
+- Include any notebooks (`.ipynb` files) you want to use in the `docs/` directory just as you would `.md` files.
 
-```
+Example:
+
+```yaml
+# mkdocs.yml
+nav:
+  - your_notebook.ipynb
+
 plugins:
   - mknotebooks
 ```
 
-You can optionally execute the notebooks, by setting `execute: true` in the config, and include a hidden preamble script, to be run before executing any cells using `preamble: "<path/to/your/script>"`. The default cell execution timeout can be overridden by setting `timeout: <timeout>`, where `<timeout>` is an integer number of seconds.
+Any static images, plots, etc. will be extracted from the notebook and placed alongside the output HTML.
+
+### Options
+
+You can optionally execute the notebooks, by setting `execute: true` in the config. You can include a hidden preamble script, to be run before executing any cells using `preamble: "<path/to/your/script>"`. The default cell execution timeout can be overridden by setting `timeout: <timeout>`, where `<timeout>` is an integer number of seconds.
 
 By default, execution will be aborted if any of the cells throws an error, but you can set `allow_errors: true` to continue execution and include the error message in the cell output.
 
-Any static images, plots, etc. will be extracted from the notebook and placed alongside the output HTML.
+Example:
+
+
+```yaml
+# mkdocs.yml
+plugins:
+  - mknotebooks
+      execute: false
+      timeout: 100
+      preamble:  "<path/to/your/script>"
+      allow_errors: false
+```
 
 ### Styling
 
@@ -51,6 +73,7 @@ pip install Pygments
 2. Enable `codehilite` extension in `mkdocs.yml`:
 
 ```
+# mkdocs.yml
 markdown_extensions:
     - codehilite
 ```
