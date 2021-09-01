@@ -270,11 +270,11 @@
         },
         "ipywidgets": {
             "hashes": [
-                "sha256:9f1a43e620530f9e570e4a493677d25f08310118d315b00e25a18f12913c41f0",
-                "sha256:e6513cfdaf5878de30f32d57f6dc2474da395a2a2991b94d487406c0ab7f55ca"
+                "sha256:028bf014a0b1d77cb676fe163115f145aacdde0bb9a51c4166940e5b62a7d1d0",
+                "sha256:3ffd1baa741eb631e7a3a69d4df290de074ef697e0ef3176e33361b44cd91711"
             ],
             "index": "pypi",
-            "version": "==7.6.3"
+            "version": "==7.6.4"
         },
         "jedi": {
             "hashes": [
