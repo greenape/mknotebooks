@@ -3,13 +3,15 @@
 
 {% block header %}
 {{ super() }}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script>
 (function() {
   function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
     var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
-    var scriptElement = document.createElement('script');
+    var jupyterWidgetsScript = document.createElement('script');
     var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
     var widgetState;
 
@@ -22,8 +24,10 @@
       }
     } catch(e) {}
 
-    scriptElement.src = widgetRendererSrc;
-    document.body.appendChild(scriptElement);
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
   }
 
   document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
