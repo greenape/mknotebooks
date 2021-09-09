@@ -247,11 +247,11 @@
         },
         "ipykernel": {
             "hashes": [
-                "sha256:3d34530e031067f04e88b72715e92c27871368c15998692d665d57027ceb18d9",
-                "sha256:6dd4b107ab755ed9286c820b2f69c2cd895046ef2a25c878929ac8b5540477a1"
+                "sha256:0bf7a9563e5ff053049c95d18b1488f4307cf334e3381020a83983274295d625",
+                "sha256:72d62a362777ee91eb990b90e55bf4375621aac478a34bf49c0ed1f3ae64167f"
             ],
             "index": "pypi",
-            "version": "==6.3.1"
+            "version": "==6.4.0"
         },
         "ipython": {
             "hashes": [
@@ -720,7 +720,7 @@
                 "sha256:fd4fd83aa912d7b89b4b4a1580d30e2a4242f3936882a3f433586e5ab97ed0d5",
                 "sha256:feb5db446e96bfecfec078b943cc07744cc759893cef045aa8b8b6d6aaa8274e"
             ],
-            "index": "pypi",
+            "markers": "python_version >= '3.6'",
             "version": "==8.3.2"
         },
         "prometheus-client": {
