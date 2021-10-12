@@ -116,11 +116,11 @@
         },
         "click": {
             "hashes": [
-                "sha256:8c04c11192119b1ef78ea049e0a6f0463e4c48ef00a30160c704337586f3ad7a",
-                "sha256:fba402a4a47334742d782209a7c79bc448911afe1149d07bdabdf480b3e2f4b6"
+                "sha256:353f466495adaeb40b6b5f592f9f91cb22372351c84caeb068132442a4518ef3",
+                "sha256:410e932b050f5eed773c4cda94de75971c89cdb3155a72a0831139a79e5ecb5b"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==8.0.1"
+            "version": "==8.0.3"
         },
         "cycler": {
             "hashes": [
@@ -260,11 +260,11 @@
         },
         "jsonschema": {
             "hashes": [
-                "sha256:48f4e74f8bec0c2f75e9fcfffa264e78342873e1b57e2cfeae54864cc5e9e4dd",
-                "sha256:9938802041347f2c62cad2aef59e9a0826cd34584f3609db950efacb4dbf6518"
+                "sha256:2b3cca28580511d44326f0e7fc582eab3cbe31aabd1a1c2cfa74a399796ffd84",
+                "sha256:9dd7c33b4a96138dc37bb86b3610d3b12d30d96433d4d73435ca3025804154a8"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==4.0.1"
+            "version": "==4.1.0"
         },
         "jupyter-client": {
             "hashes": [
@@ -475,11 +475,11 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:02aeb2f9d9826b5c5ba4e320b4008bdc89f7b30ca00ded72ee43385a1690eaa4",
-                "sha256:a9b7c6432ebadd0e192e3b341b25bd41bd1c1b167061ea629a9887a1e4129176"
+                "sha256:3444b681f47e62c0ec7166bfb6f12360a26c751224cd6d3b3816f7310827073f",
+                "sha256:56bcc4e43356b97caa07706b0f446a3d9c39eb9aa1ad64131686d555270fc65e"
             ],
             "index": "pypi",
-            "version": "==7.3.2"
+            "version": "==7.3.3"
         },
         "mkdocs-material-extensions": {
             "hashes": [
