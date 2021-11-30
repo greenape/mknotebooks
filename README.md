@@ -60,7 +60,7 @@ Mknotebooks applies default styling to improve the appearance of notebook input/
    enable_default_pandas_dataframe_styling: false
 ```
 
-### Syntax hightlightting
+### Syntax highlighting
 
 In order to enable syntax highlighting for code blocks, `pygments` has to be installed and `codehilite` extension has to be enabled in `mkdocs.yml`.
 
@@ -94,8 +94,7 @@ If you are using GitLab, you will need to set `binder_service_name` to `"gl"`.
 
 ## Examples
 
-Example docs projects demonstrating the [use of a preamble](examples/execute_with_preamble) and [Binder](examples/binder_logo) are. Try them out by running `pipenv install && pipenv run mkdocs serve`.
-
+See the [examples folder](examples/) for examples on the [use of a preamble](examples/execute_with_preamble) and [using Binder](examples/binder_logo). Try them out by running `pipenv install && pipenv run mkdocs serve`.
 
 ## Inspecting generated markdown
 
