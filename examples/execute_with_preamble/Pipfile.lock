@@ -222,7 +222,7 @@
                 "sha256:53ccfd5c134223e497627b9815d5030edf77d2ed573922f7a0b8f8bb81a1c100",
                 "sha256:75bdec14c397f528724c1bfd9709d660b33a4d2e77387a3358f20b848bb5e5fb"
             ],
-            "markers": "python_full_version < '3.8.0'",
+            "markers": "python_version >= '3.6'",
             "version": "==4.8.2"
         },
         "importlib-resources": {
@@ -526,11 +526,11 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:88e863ff3614c1acc25ec5d2c1a6f9787326f2025d7d28170a68d0bf85d1c2da",
-                "sha256:9a2a638c05e48c58786e5be558c0ea8995d8fa20138f1ed22bee48eb08528a36"
+                "sha256:76aaf358846483f8e81eea6277a577e72be4271321f8fdb5728f8c904576ec9d",
+                "sha256:7ff116fbd2c494f352d88ebd92730e297b5aefe87148d5c904c32907ed8bfe42"
             ],
             "index": "pypi",
-            "version": "==8.0.4"
+            "version": "==8.0.5"
         },
         "mkdocs-material-extensions": {
             "hashes": [
