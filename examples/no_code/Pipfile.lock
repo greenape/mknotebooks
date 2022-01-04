@@ -253,11 +253,11 @@
         },
         "ipykernel": {
             "hashes": [
-                "sha256:3a227788216b43982d9ac28195949467627b0d16e6b8af9741d95dcaa8c41a89",
-                "sha256:82ded8919fa7f5483be2b6219c3b13380d93faab1fc49cc2cfcd10e9e24cc158"
+                "sha256:91ff0058b45660aad4a68088041059c0d378cd53fc8aff60e5abc91bcc049353",
+                "sha256:de99f6c1caa72578305cc96122ee3a19669e9c1958694a2b564ed1be28240ab9"
             ],
             "index": "pypi",
-            "version": "==6.6.0"
+            "version": "==6.6.1"
         },
         "ipython": {
             "hashes": [
