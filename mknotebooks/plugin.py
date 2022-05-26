@@ -309,6 +309,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
     def on_post_page(self, output: str, page: Page, config: MkDocsConfig) -> str:
         output = re.compile("attachment:(.+\.(png|jpg|svg))").sub(r"\1", output)
         output = re.compile("<p>hzzhzkh:[0-9]+</p>").sub("", output)
+        output = re.compile("</pre></blockquote>").sub("</pre>", output)
         return output
 
 
