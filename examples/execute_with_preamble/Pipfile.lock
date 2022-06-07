@@ -257,11 +257,11 @@
         },
         "ipykernel": {
             "hashes": [
-                "sha256:0e28273e290858393e86e152b104e5506a79c13d25b951ac6eca220051b4be60",
-                "sha256:2b0987af43c0d4b62cecb13c592755f599f96f29aafe36c01731aaa96df30d39"
+                "sha256:6f42070a5d87ecbf4a2fc27a7faae8d690fd3794825a090ddf6b00b9678a5b69",
+                "sha256:fedc79bebd8a438162d056e0c7662d5ac8a47d1f6ef33a702e8460248dc4517f"
             ],
             "index": "pypi",
-            "version": "==6.13.0"
+            "version": "==6.13.1"
         },
         "ipython": {
             "hashes": [
@@ -312,11 +312,11 @@
         },
         "jupyter-client": {
             "hashes": [
-                "sha256:8f92691bf2d8c670e108813a0290d93a3dc84f74fb844e915b7e587ef2fcbf44",
-                "sha256:be7dff1c6792a951169b514b9b66e9d7ffaba811575cf49d24b73a1ca28f014a"
+                "sha256:5b4f5bb9f9c3b5466ba84761312ed75f487bf3b8b0e1eeeec4bb2d0f9d855c70",
+                "sha256:9e80defc0058712bf2b30327bad582f9734668aa85e90256dcba116325ce3060"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==7.3.2"
+            "version": "==7.3.3"
         },
         "jupyter-core": {
             "hashes": [
