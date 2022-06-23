@@ -268,7 +268,7 @@
                 "sha256:af3bdb46aa292bce5615b1b2ebc76c2080c5f77f54bda2ec72461317273e7cd6",
                 "sha256:c175d2440a1caff76116eb719d40538fbb316e214eda85c5515c303aacbfb23e"
             ],
-            "markers": "python_version >= '3.7'",
+            "markers": "python_version >= '3.3'",
             "version": "==7.34.0"
         },
         "ipython-genutils": {
@@ -336,11 +336,11 @@
         },
         "jupyterlab-widgets": {
             "hashes": [
-                "sha256:c2a9bd3789f120f64d73268c066ed3b000c56bc1dda217be5cdc43e7b4ebad3f",
-                "sha256:d5f41bc1713795385f718d44dcba47e1e1473c6289f28a95aa6b2c0782ee372a"
+                "sha256:67d0ef1e407e0c42c8ab60b9d901cd7a4c68923650763f75bf17fb06c1943b79",
+                "sha256:90ab47d99da03a3697074acb23b2975ead1d6171aa41cb2812041a7f2a08177a"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==1.1.0"
+            "version": "==1.1.1"
         },
         "kiwisolver": {
             "hashes": [
@@ -519,11 +519,11 @@
         },
         "mkdocs-material": {
             "hashes": [
-                "sha256:01f3fbab055751b3b75a64b538e86b9ce0c6a0f8d43620f6287dfa16534443e5",
-                "sha256:be8f95c0dfb927339b55b2cc066423dc0b381be9828ff74a5b02df979a859b66"
+                "sha256:e0e01f5deeacb126ad0a64998bb66d512c24467f4c9550a0afc74f7f0719a9ae",
+                "sha256:f24ed0fc185dd88b036abc0425ce9e31ecf1e7e673bf01d3b168b373c08e629a"
             ],
             "index": "pypi",
-            "version": "==8.3.6"
+            "version": "==8.3.7"
         },
         "mkdocs-material-extensions": {
             "hashes": [
@@ -1160,10 +1160,10 @@
         },
         "widgetsnbextension": {
             "hashes": [
-                "sha256:4fd321cad39fdcf8a8e248a657202d42917ada8e8ed5dd3f60f073e0d54ceabd",
-                "sha256:e84a7a9fcb9baf3d57106e184a7389a8f8eb935bf741a5eb9d60aa18cc029a80"
+                "sha256:954e0faefdd414e4e013f17dbc7fd86f24cf1d243a3ac85d5f0fc2c2d2b50c66",
+                "sha256:9c84ae64c2893c7cbe2eaafc7505221a795c27d68938454034ac487319a75b10"
             ],
-            "version": "==3.6.0"
+            "version": "==3.6.1"
         },
         "zipp": {
             "hashes": [
