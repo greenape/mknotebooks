@@ -268,7 +268,7 @@
                 "sha256:af3bdb46aa292bce5615b1b2ebc76c2080c5f77f54bda2ec72461317273e7cd6",
                 "sha256:c175d2440a1caff76116eb719d40538fbb316e214eda85c5515c303aacbfb23e"
             ],
-            "markers": "python_version >= '3.7'",
+            "markers": "python_version >= '3.3'",
             "version": "==7.34.0"
         },
         "ipython-genutils": {
@@ -280,11 +280,11 @@
         },
         "ipywidgets": {
             "hashes": [
-                "sha256:ab4a5596855a88b83761921c768707d65e5847068139bc1729ddfe834703542a",
-                "sha256:e58ff58bc94d481e91ecb6e13a5cb96a87b6b8ade135e055603d0ca24593df38"
+                "sha256:5f2fa1b7afae1af32c88088c9828ad978de93ddda393d7ed414e553fee93dcab",
+                "sha256:aa1076ab7102b2486ae2607c43c243200a07c17d6093676c419d4b6762489a50"
             ],
             "index": "pypi",
-            "version": "==7.7.0"
+            "version": "==7.7.1"
         },
         "jedi": {
             "hashes": [
