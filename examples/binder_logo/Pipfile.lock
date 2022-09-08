@@ -183,11 +183,11 @@
         },
         "ipywidgets": {
             "hashes": [
-                "sha256:1a296094203309e834f2781a275214d255ac5d266bbfa602f9f6915e1806614c",
-                "sha256:fc0744df3a964ecfd68a6d2debe547fe89db252b8d7bb3db5740aba72edb0e6c"
+                "sha256:08cb75c6e0a96836147cbfdc55580ae04d13e05d26ffbc377b4e1c68baa28b1f",
+                "sha256:1dc3dd4ee19ded045ea7c86eb273033d238d8e43f9e7872c52d092683f263891"
             ],
             "index": "pypi",
-            "version": "==8.0.1"
+            "version": "==8.0.2"
         },
         "jedi": {
             "hashes": [
