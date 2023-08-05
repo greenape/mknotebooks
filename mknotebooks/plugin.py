@@ -14,7 +14,7 @@ import nbformat
 import git
 from mkdocs.config.base import Config as MkDocsConfig
 from mkdocs.structure.files import File, Files
-from mkdocs.structure.pages import Page, _RelativePathExtension
+from mkdocs.structure.pages import Page, _RelativePathTreeprocessor
 from mkdocs.structure.toc import get_toc
 from nbconvert import HTMLExporter, MarkdownExporter
 from traitlets.config import Config
@@ -295,12 +295,15 @@ class Plugin(mkdocs.plugins.BasePlugin):
         ):
             log.debug(f"Re-rendering page with markdown in divs: {page}")
             extensions = [
-                _RelativePathExtension(page.file, files),
                 "markdown.extensions.md_in_html",
             ] + config["markdown_extensions"]
             md = markdown.Markdown(
                 extensions=extensions, extension_configs=config["mdx_configs"] or {}
             )
+
+            relative_path_ext = _RelativePathTreeprocessor(page.file, files, config)
+            relative_path_ext._register(md)
+            
             html = md.convert(page.markdown)
             page.toc = get_toc(getattr(md, "toc_tokens", []))
 
