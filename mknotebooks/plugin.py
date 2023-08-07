@@ -34,7 +34,6 @@ here = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_git_root(path):
-
     git_repo = git.Repo(path, search_parent_directories=True)
     git_root = git_repo.git.rev_parse("--show-toplevel")
     return git_root
@@ -303,7 +302,7 @@ class Plugin(mkdocs.plugins.BasePlugin):
 
             relative_path_ext = _RelativePathTreeprocessor(page.file, files, config)
             relative_path_ext._register(md)
-            
+
             html = md.convert(page.markdown)
             page.toc = get_toc(getattr(md, "toc_tokens", []))
 
