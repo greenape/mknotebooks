@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ### Fixed
+- Fixed import error with MkdDocs > 1.5.0. [#1000](https://github.com/greenape/mknotebooks/issues/100). (Thanks to [@josh-gree](https://github.com/josh-gree))
 
 
 ### Removed
