@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [0.8.0]
 ### Fixed
-- Fixed import error with MkdDocs > 1.5.0. [#1000](https://github.com/greenape/mknotebooks/issues/100). (Thanks to [@josh-gree](https://github.com/josh-gree))
+- Fixed import error with MkdDocs > 1.5.0. [#1000](https://github.com/greenape/mknotebooks/issues/1000). (Thanks to [@josh-gree](https://github.com/josh-gree))
 
 ## [0.7.1]
 - Fixed additional notebook JS plugins being broken on notebook pages. [#519](https://github.com/greenape/mknotebooks/issues/519). (Thanks to [@rclement](https://github.com/rclement))
