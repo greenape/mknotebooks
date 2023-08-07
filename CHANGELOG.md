@@ -10,10 +10,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 
 ### Fixed
-- Fixed import error with MkdDocs > 1.5.0. [#1000](https://github.com/greenape/mknotebooks/issues/100). (Thanks to [@josh-gree](https://github.com/josh-gree))
 
 
 ### Removed
+
+
+## [0.8.1]
+### Fixed
+- Fixed import error with MkdDocs > 1.5.0. [#1000](https://github.com/greenape/mknotebooks/issues/100). (Thanks to [@josh-gree](https://github.com/josh-gree))
 
 ## [0.7.1]
 - Fixed additional notebook JS plugins being broken on notebook pages. [#519](https://github.com/greenape/mknotebooks/issues/519). (Thanks to [@rclement](https://github.com/rclement))
@@ -89,7 +93,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Compatibility with mkdocs 1.1. [#14](https://github.com/greenape/mknotebooks/pull/14) (thanks to [@lgeiger](https://github.com/lgeiger))
 - Set the correct class on headerlink. [#16](https://github.com/greenape/mknotebooks/pull/16) (thanks to [@lgeiger](https://github.com/lgeiger))
 
-[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.7.1...master
+[Unreleased]: https://github.com/greenape/mktheapidocs/compare/0.8.0...master
+[0.8.0]: https://github.com/greenape/mktheapidocs/compare/0.7.1...0.8.0
 [0.7.1]: https://github.com/greenape/mktheapidocs/compare/0.7.0...0.7.1
 [0.7.0]: https://github.com/greenape/mktheapidocs/compare/0.6.1...0.7.0
 [0.6.1]: https://github.com/greenape/mktheapidocs/compare/0.6.0...0.6.1
