@@ -286,7 +286,7 @@
                 "sha256:1aaf550d4f73e5d6783e7acb77aec43d49da8017410afae93822cc9cca98c4d4",
                 "sha256:cb52082e659e97afc5dac71e79de97d8681de3aa07ff18578330904a9d18e5b5"
             ],
-            "markers": "python_version >= '3.7'",
+            "markers": "python_version < '3.10'",
             "version": "==6.7.0"
         },
         "importlib-resources": {
@@ -363,11 +363,11 @@
         },
         "markdown": {
             "hashes": [
-                "sha256:cbb516f16218e643d8e0a95b309f77eb118cb138d39a4f27851e6a63581db874",
-                "sha256:f5da449a6e1c989a4cea2631aa8ee67caa5a2ef855d551c88f9e309f4634c621"
+                "sha256:225c6123522495d4119a90b3a3ba31a1e87a70369e03f14799ea9c0d7183a3d6",
+                "sha256:a4c1b65c0957b4bd9e7d86ddc7b3c9868fb9670660f6f99f6d1bca8954d5a941"
             ],
-            "markers": "python_version >= '3.6'",
-            "version": "==3.3.7"
+            "markers": "python_version >= '3.7'",
+            "version": "==3.4.4"
         },
         "markdown-it-py": {
             "hashes": [
@@ -459,11 +459,11 @@
         },
         "mkdocs": {
             "hashes": [
-                "sha256:8947af423a6d0facf41ea1195b8e1e8c85ad94ac95ae307fe11232e0424b11c5",
-                "sha256:c8856a832c1e56702577023cd64cc5f84948280c1c0fcc6af4cd39006ea6aa8c"
+                "sha256:60a62538519c2e96fe8426654a67ee177350451616118a41596ae7c876bb7eac",
+                "sha256:70d0da09c26cff288852471be03c23f0f521fc15cf16ac89c7a3bfb9ae8d24f9"
             ],
             "index": "pypi",
-            "version": "==1.4.2"
+            "version": "==1.5.2"
         },
         "more-itertools": {
             "hashes": [
@@ -521,6 +521,14 @@
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.5.0"
         },
+        "pathspec": {
+            "hashes": [
+                "sha256:1d6ed233af05e679efb96b1851550ea95bbb64b7c490b0f5aa52996c11e92a20",
+                "sha256:e0d8d0ac2f12da61956eb2306b69f9469b42f4deb0f3cb6ed47b9cce9996ced3"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==0.11.2"
+        },
         "pkginfo": {
             "hashes": [
                 "sha256:4b7a555a6d5a22169fcc9cf7bfd78d296b0361adad412a346c1226849af5e546",
@@ -536,6 +544,14 @@
             ],
             "markers": "python_version < '3.9'",
             "version": "==1.3.10"
+        },
+        "platformdirs": {
+            "hashes": [
+                "sha256:b45696dab2d7cc691a3226759c0d3b00c47c8b6e293d96f6436f733303f77f6d",
+                "sha256:d7c24979f292f916dc9cbf8648319032f551ea8c49a4c9bf2fb556a02070ec1d"
+            ],
+            "markers": "python_version >= '3.7'",
+            "version": "==3.10.0"
         },
         "pycparser": {
             "hashes": [
@@ -915,7 +931,7 @@
                 "sha256:1aaf550d4f73e5d6783e7acb77aec43d49da8017410afae93822cc9cca98c4d4",
                 "sha256:cb52082e659e97afc5dac71e79de97d8681de3aa07ff18578330904a9d18e5b5"
             ],
-            "markers": "python_version >= '3.7'",
+            "markers": "python_version < '3.10'",
             "version": "==6.7.0"
         },
         "iniconfig": {
